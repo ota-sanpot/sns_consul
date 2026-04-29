@@ -34,18 +34,25 @@
       margin: 0;
     }
 
-    /* グラデーションテキスト */
+    /* グラデーションテキスト（シマーアニメーション付き） */
     .grad-text {
-      background: var(--grad-main);
+      background: linear-gradient(110deg, #6366f1 0%, #7c3aed 30%, #ec4899 55%, #7c3aed 78%, #6366f1 100%);
+      background-size: 250% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      animation: shimmer 4s linear infinite;
     }
     .grad-text-light {
-      background: var(--grad-text);
+      background: linear-gradient(110deg, #a5b4fc 0%, #f9a8d4 45%, #a5b4fc 100%);
+      background-size: 200% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      animation: shimmer 3s linear infinite;
+    }
+    @keyframes shimmer {
+      to { background-position: 250% center; }
     }
 
     /* プライマリボタン */
@@ -171,8 +178,20 @@
       color: var(--text-sub);
       text-decoration: none;
       transition: color .2s ease;
+      position: relative;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 0; height: 1.5px;
+      background: linear-gradient(90deg, #6366f1, #ec4899);
+      transition: width .3s cubic-bezier(.16,1,.3,1);
     }
     .nav-link:hover { color: var(--indigo); }
+    .nav-link:hover::after,
+    .nav-link.active::after { width: 100%; }
+    .nav-link.active { color: var(--indigo); font-weight: 700; }
 
     /* モバイルメニュー */
     #mobile-menu {
@@ -285,6 +304,11 @@
       padding: 8px 16px;
       border-radius: 100px;
       margin-bottom: 28px;
+      animation: badgePulse 3s ease-in-out infinite;
+    }
+    @keyframes badgePulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(99,102,241,0); }
+      50%       { box-shadow: 0 0 0 10px rgba(99,102,241,0.07); }
     }
     .hero-h1 {
       font-size: clamp(36px, 6vw, 72px);
@@ -858,19 +882,131 @@
   .section { padding: 0 16px; }
 }
 
+/* ===== PRO ANIMATIONS ===== */
+
+/* スクロールプログレスバー */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, #6366f1, #7c3aed, #ec4899);
+  z-index: 600;
+  pointer-events: none;
+  transition: width .05s linear;
+}
+
+/* カスタムカーソル（デスクトップのみ） */
+.cursor-dot {
+  position: fixed;
+  width: 6px; height: 6px;
+  background: #6366f1;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%,-50%);
+  transition: width .2s ease, height .2s ease, background .2s ease, opacity .3s ease;
+  mix-blend-mode: normal;
+}
+.cursor-ring {
+  position: fixed;
+  width: 36px; height: 36px;
+  border: 1.5px solid rgba(99,102,241,0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%,-50%);
+  transition: width .3s ease, height .3s ease, border-color .3s ease;
+  will-change: left, top;
+}
+.cursor-dot.hover  { width: 10px; height: 10px; background: #ec4899; }
+.cursor-ring.hover { width: 54px; height: 54px; border-color: rgba(236,72,153,0.5); }
+body.has-cursor,
+body.has-cursor a,
+body.has-cursor button { cursor: none !important; }
+@media (hover: none) { .cursor-dot, .cursor-ring { display: none; } }
+
+/* ヒーロー入場アニメーション */
+.hero-anim {
+  opacity: 0;
+  transform: translateY(32px);
+  animation: heroEnter .95s cubic-bezier(.16,1,.3,1) forwards;
+}
+@keyframes heroEnter {
+  to { opacity: 1; transform: translateY(0); }
+}
+.ha-d0 { animation-delay: .1s; }
+.ha-d1 { animation-delay: .28s; }
+.ha-d2 { animation-delay: .46s; }
+.ha-d3 { animation-delay: .64s; }
+.ha-d4 { animation-delay: .82s; }
+.ha-d5 { animation-delay: 1s; }
+
+/* ヒーロー ノイズテクスチャ */
+.hero-noise {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px;
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* 3Dチルト用 */
+.pain-card,
+.service-card {
+  will-change: transform;
+}
+
+/* Featured 料金カード アニメーティッドグローボーダー */
+.pricing-card.featured {
+  border: 2px solid transparent;
+  background-image:
+    linear-gradient(var(--dark-bg), var(--dark-bg)),
+    linear-gradient(135deg, #6366f1, #7c3aed, #ec4899, #6366f1);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  background-size: auto, 400% 400%;
+  animation: borderGlow 5s ease infinite;
+}
+@keyframes borderGlow {
+  0%   { background-position: 0 0, 0%   50%; }
+  50%  { background-position: 0 0, 100% 50%; }
+  100% { background-position: 0 0, 0%   50%; }
+}
+
+/* マーキー ホバーポーズ */
+.marquee-wrap:hover .marquee-track { animation-play-state: paused; }
+
+/* スクロールリビール（改善版イージング） */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 1s cubic-bezier(.16,1,.3,1), transform 1s cubic-bezier(.16,1,.3,1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .blob, .cta-blob-1, .cta-blob-2, .marquee-track {
-    animation: none;
-  }
-  .reveal {
-    transition: none;
-    opacity: 1;
-    transform: none;
-  }
+  .blob, .cta-blob-1, .cta-blob-2, .marquee-track,
+  .grad-text, .grad-text-light, .hero-badge,
+  .pricing-card.featured::before { animation: none; }
+  .hero-anim { opacity: 1; transform: none; animation: none; }
+  .reveal     { opacity: 1; transform: none; transition: none; }
+  .cursor-dot, .cursor-ring { display: none; }
 }
   </style>
 </head>
 <body class="antialiased">
+
+<!-- スクロールプログレスバー -->
+<div class="scroll-progress" aria-hidden="true"></div>
+<!-- カスタムカーソル -->
+<div class="cursor-dot"  aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
 
 <!-- Navigation -->
 <nav id="navbar" aria-label="メインナビゲーション">
@@ -918,24 +1054,25 @@
   <div class="blob blob-1"></div>
   <div class="blob blob-2"></div>
   <div class="blob blob-3"></div>
+  <div class="hero-noise" aria-hidden="true"></div>
 
-  <div class="hero-content reveal">
-    <div class="hero-badge">
+  <div class="hero-content">
+    <div class="hero-badge hero-anim ha-d0">
       <i data-lucide="map-pin" style="width:12px;height:12px;"></i>
       SNS × MEO CONSULTING — 大田区特化
     </div>
 
     <h1 class="hero-h1">
-      「美味しい」を、<br>
-      <span class="grad-text-light">大田区に届ける。</span>
+      <span class="hero-anim ha-d1" style="display:block;">「美味しい」を、</span>
+      <span class="grad-text-light hero-anim ha-d2" style="display:block;">大田区に届ける。</span>
     </h1>
 
-    <p class="hero-sub">
+    <p class="hero-sub hero-anim ha-d3">
       見つけてもらえなければ、届かない。<br>
       認知から来店に繋げる集客基盤を構築します。
     </p>
 
-    <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;">
+    <div class="hero-anim ha-d4" style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;">
       <a href="#contact" class="btn-primary">
         まずは無料相談してみる
         <i data-lucide="arrow-right" style="width:16px;height:16px;margin-left:8px;"></i>
@@ -946,7 +1083,7 @@
       </a>
     </div>
 
-    <div class="hero-kpi">
+    <div class="hero-kpi hero-anim ha-d5">
       <div class="hero-kpi-item">
         <div class="hero-kpi-num grad-text-light">+150<span style="font-size:20px;">%</span></div>
         <div class="hero-kpi-label">週末来客数アップ事例</div>
@@ -1385,6 +1522,95 @@
     { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
   );
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ===== PRO ANIMATIONS =====
+
+  // スクロールプログレスバー
+  const progressBar = document.querySelector('.scroll-progress');
+  window.addEventListener('scroll', () => {
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+    progressBar.style.width = Math.min(100, pct) + '%';
+  }, { passive: true });
+
+  // カスタムカーソル（ポインターデバイスのみ）
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.body.classList.add('has-cursor');
+    const dot  = document.querySelector('.cursor-dot');
+    const ring = document.querySelector('.cursor-ring');
+    let mx = -200, my = -200, rx = -200, ry = -200;
+
+    window.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      dot.style.left = mx + 'px';
+      dot.style.top  = my + 'px';
+    });
+
+    (function tick() {
+      rx += (mx - rx) * 0.13;
+      ry += (my - ry) * 0.13;
+      ring.style.left = rx + 'px';
+      ring.style.top  = ry + 'px';
+      requestAnimationFrame(tick);
+    })();
+
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => { dot.classList.add('hover'); ring.classList.add('hover'); });
+      el.addEventListener('mouseleave', () => { dot.classList.remove('hover'); ring.classList.remove('hover'); });
+    });
+  }
+
+  // 3D カードチルト（サービス・お悩みカード）
+  document.querySelectorAll('.pain-card, .service-card').forEach(card => {
+    let raf = null;
+    card.addEventListener('mousemove', e => {
+      if (raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const r  = card.getBoundingClientRect();
+        const x  = (e.clientX - r.left) / r.width  - 0.5;
+        const y  = (e.clientY - r.top)  / r.height - 0.5;
+        card.style.transform    = `perspective(700px) rotateY(${x * 12}deg) rotateX(${-y * 12}deg) translateZ(12px)`;
+        card.style.transition   = 'transform .05s linear, box-shadow .3s ease';
+        card.style.boxShadow    = `${x * -12}px ${y * -12}px 40px rgba(99,102,241,0.15)`;
+      });
+    });
+    card.addEventListener('mouseleave', () => {
+      if (raf) cancelAnimationFrame(raf);
+      card.style.transition = 'transform .7s cubic-bezier(.23,1,.32,1), box-shadow .7s ease';
+      card.style.transform  = '';
+      card.style.boxShadow  = '';
+    });
+  });
+
+  // マグネティックボタン
+  document.querySelectorAll('.btn-primary').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+      const r = btn.getBoundingClientRect();
+      const x = (e.clientX - r.left - r.width  / 2) * 0.28;
+      const y = (e.clientY - r.top  - r.height / 2) * 0.28;
+      btn.style.transform = `translate(${x}px, ${y - 2}px)`;
+      btn.style.transition = 'transform .1s ease';
+    });
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transition = 'transform .5s cubic-bezier(.23,1,.32,1), box-shadow .2s ease';
+      btn.style.transform  = '';
+    });
+  });
+
+  // アクティブナビリンク（スクロール追従）
+  const navAnchors  = document.querySelectorAll('.nav-link[href^="#"]');
+  const trackedSecs = [...navAnchors]
+    .map(l => document.getElementById(l.getAttribute('href').slice(1)))
+    .filter(Boolean);
+
+  const navObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      navAnchors.forEach(l => l.classList.remove('active'));
+      const a = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+      if (a) a.classList.add('active');
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  trackedSecs.forEach(s => navObs.observe(s));
 </script>
 
 </body>
