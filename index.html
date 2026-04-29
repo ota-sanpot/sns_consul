@@ -1,74 +1,874 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GURUMA｜大田区飲食店特化型マーケティングコンサルティング</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="icon" href="img/favicon.ico">
-    <link rel="apple-touch-icon" href="img/favicon.ico">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Noto Sans JP"', 'sans-serif'],
-                        serif: ['"Noto Serif JP"', 'serif'],
-                    },
-                    colors: {
-                        brand: {
-                            dark: '#1A1A1A',
-                            light: '#FAF8F5',
-                            accent: '#C5A880', // 洗練されたゴールド/ベージュ
-                            text: '#333333',
-                            muted: '#888888'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body {
-            background-color: #FAF8F5;
-            color: #333333;
-        }
-        /* スクロールアニメーション用のクラス */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .fade-up.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .hero-overlay {
-            background: linear-gradient(to right, rgba(26, 26, 26, 0.9) 0%, rgba(26, 26, 26, 0.4) 100%);
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GURUMA｜大田区飲食店特化型SNS×MEOコンサルティング</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="icon" href="img/favicon.ico">
+  <link rel="apple-touch-icon" href="img/favicon.ico">
+  <style>
+    :root {
+      --indigo:    #6366f1;
+      --purple:    #7c3aed;
+      --pink:      #ec4899;
+      --dark-bg:   #09090b;
+      --dark-nav:  #040407;
+      --light-bg:  #fafafa;
+      --text-main: #0f0f0f;
+      --text-sub:  #6b6b6b;
+      --grad-main: linear-gradient(135deg, #6366f1, #7c3aed, #ec4899);
+      --grad-text: linear-gradient(135deg, #a5b4fc, #f9a8d4);
+    }
 
-        .gold-gradient-text {
-            background: linear-gradient(135deg, #D4AF37 0%, #AA7C11 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    * { box-sizing: border-box; }
 
-        /* カスタムスクロールバー */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #FAF8F5;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #C5A880;
-            border-radius: 4px;
-        }
-    </style>
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--light-bg);
+      color: var(--text-main);
+      overflow-x: hidden;
+      margin: 0;
+    }
+
+    /* グラデーションテキスト */
+    .grad-text {
+      background: var(--grad-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .grad-text-light {
+      background: var(--grad-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* プライマリボタン */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      padding: 15px 34px;
+      border-radius: 100px;
+      box-shadow: 0 8px 40px rgba(99,102,241,0.5);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 48px rgba(99,102,241,0.6);
+    }
+
+    /* ゴーストボタン（ダーク背景用） */
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      color: rgba(255,255,255,0.85);
+      border-bottom: 1px solid rgba(255,255,255,0.5);
+      font-size: 13px;
+      font-weight: 400;
+      text-decoration: none;
+      padding-bottom: 2px;
+      transition: color .2s ease;
+      background: none;
+      cursor: pointer;
+    }
+    .btn-ghost:hover { color: #ffffff; }
+
+    /* アウトラインボタン（ライト背景用） */
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid #9ca3af;
+      color: #0f0f0f;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 12px 28px;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: background .2s ease, color .2s ease;
+    }
+    .btn-outline:hover { background: #0f0f0f; color: #fff; }
+
+    /* セクションラベル */
+    .section-label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .section-label::before {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 2px;
+      background: var(--grad-main);
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+
+    /* スクロールフェードイン */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+    .reveal-delay-4 { transition-delay: .4s; }
+
+    /* スクロールバー */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--light-bg); }
+    ::-webkit-scrollbar-thumb { background: var(--indigo); border-radius: 3px; }
+
+    /* ナビゲーション */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.8);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      transition: box-shadow .3s ease;
+    }
+    #navbar.scrolled {
+      box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+    }
+    .nav-logo {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      text-decoration: none;
+    }
+    .nav-link {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: var(--text-sub);
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+    .nav-link:hover { color: var(--indigo); }
+
+    /* モバイルメニュー */
+    #mobile-menu {
+      display: none;
+      background: rgba(255,255,255,0.97);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(0,0,0,0.06);
+      padding: 16px 0;
+    }
+    #mobile-menu.open { display: block; }
+    .mobile-nav-link {
+      display: block;
+      padding: 12px 24px;
+      font-size: 14px;
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 400;
+    }
+    .mobile-nav-link:hover { color: var(--indigo); }
+
+    /* フォーカス表示（キーボードナビゲーション用） */
+    .nav-link:focus-visible,
+    .mobile-nav-link:focus-visible,
+    #mobile-menu-btn:focus-visible,
+    .btn-primary:focus-visible,
+    .btn-ghost:focus-visible,
+    .btn-outline:focus-visible {
+      outline: 2px solid var(--indigo);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      background: var(--dark-bg);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding-top: 68px;
+    }
+
+    /* ドットグリッド */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* blob */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+    .blob-1 {
+      width: 600px; height: 600px;
+      background: rgba(99,102,241,0.35);
+      top: -200px; right: -150px;
+      animation: blobFloat 8s ease-in-out infinite;
+    }
+    .blob-2 {
+      width: 500px; height: 500px;
+      background: rgba(124,58,237,0.3);
+      bottom: -150px; left: -100px;
+      animation: blobFloat 8s ease-in-out infinite;
+      animation-delay: -3s;
+    }
+    .blob-3 {
+      width: 400px; height: 400px;
+      background: rgba(236,72,153,0.25);
+      top: 40%; left: 40%;
+      animation: blobFloat 8s ease-in-out infinite;
+      animation-delay: -5s;
+    }
+
+    @keyframes blobFloat {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      33%       { transform: translate(30px,-40px) scale(1.05); }
+      66%       { transform: translate(-20px,20px) scale(.95); }
+    }
+
+    /* Hero コンテンツ */
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 24px;
+      width: 100%;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(99,102,241,0.15);
+      border: 1px solid rgba(99,102,241,0.3);
+      color: #a5b4fc;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+    .hero-h1 {
+      font-size: clamp(36px, 6vw, 72px);
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin: 0 0 24px;
+      max-width: 700px;
+    }
+    .hero-sub {
+      font-size: 16px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.9;
+      max-width: 480px;
+      margin: 0 0 40px;
+    }
+    .hero-kpi {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-top: 56px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .hero-kpi-item { color: #fff; }
+    .hero-kpi-num {
+      font-size: 36px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .hero-kpi-label {
+      font-size: 11px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 1px;
+    }
+
+    /* マーキー */
+    .marquee-wrap {
+      background: var(--grad-main);
+      padding: 18px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .marquee-track {
+      display: inline-flex;
+      animation: marquee 18s linear infinite;
+    }
+    .marquee-text {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+      padding: 0 32px;
+    }
+    .marquee-sep {
+      color: rgba(255,255,255,0.4);
+      padding: 0 8px;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* 共通セクション */
+    .section {
+      padding: 96px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-bg-light  { background: var(--light-bg); }
+    .section-bg-white  { background: #ffffff; }
+    .section-bg-dark   { background: var(--dark-bg); }
+    .section-wrap      { padding: 96px 0; }
+
+    .section-heading {
+      font-size: clamp(26px, 4vw, 40px);
+      font-weight: 900;
+      letter-spacing: -1px;
+      line-height: 1.2;
+      margin: 0 0 16px;
+      color: var(--text-main);
+    }
+    .section-sub {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-sub);
+      line-height: 1.8;
+      max-width: 480px;
+      margin: 0 0 48px;
+    }
+
+    /* 問題カード */
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .pain-card {
+      background: #ffffff;
+      border: 1px solid #f0f0f0;
+      border-radius: 16px;
+      padding: 36px 28px;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .pain-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(99,102,241,0.1);
+    }
+    .pain-icon {
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(236,72,153,0.1));
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+    }
+    .pain-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.45;
+      margin: 0 0 12px;
+    }
+    .pain-body {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-sub);
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    /* サービスカード */
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .service-card {
+      background: #ffffff;
+      border: 1px solid #f0f0f0;
+      border-radius: 16px;
+      padding: 32px 28px;
+      position: relative;
+      overflow: hidden;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--grad-main);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .3s ease;
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(99,102,241,0.1);
+    }
+    .service-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--indigo);
+      margin-bottom: 12px;
+    }
+    .service-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin: 0 0 12px;
+      letter-spacing: -0.5px;
+    }
+    .service-body {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-sub);
+      line-height: 1.8;
+      margin: 0;
+    }
+    .service-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(236,72,153,0.12));
+    }
+
+    /* 導入フロー */
+    .flow-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+      max-width: 640px;
+    }
+    .flow-item {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      position: relative;
+      padding-bottom: 40px;
+    }
+    .flow-item:last-child { padding-bottom: 0; }
+    .flow-item:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 44px;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, rgba(99,102,241,0.3), transparent);
+    }
+    .flow-num {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--grad-main);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 900;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 16px rgba(99,102,241,0.4);
+    }
+    .flow-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin: 0 0 6px;
+      padding-top: 10px;
+    }
+    .flow-body {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-sub);
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    /* 事例カード */
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 24px;
+    }
+    .case-card {
+      background: #ffffff;
+      border: 1px solid #f0f0f0;
+      border-radius: 16px;
+      padding: 32px 28px;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .case-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(99,102,241,0.08);
+    }
+    .case-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--text-sub);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .case-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.45;
+      margin: 0 0 20px;
+    }
+    .case-block {
+      background: var(--light-bg);
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin-bottom: 12px;
+    }
+    .case-block-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--indigo);
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    .case-block-body {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-sub);
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    /* 料金プラン */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+    @media (max-width: 768px) {
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+    .pricing-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 20px;
+      padding: 36px 28px;
+      display: flex;
+      flex-direction: column;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.08);
+    }
+    .pricing-card.featured {
+      background: var(--dark-bg);
+      border-color: transparent;
+      transform: scale(1.04);
+      box-shadow: 0 24px 64px rgba(99,102,241,0.3);
+    }
+    .pricing-card.featured:hover {
+      transform: scale(1.04) translateY(-4px);
+    }
+    .pricing-card-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .pricing-card-label.featured-label {
+      background: var(--grad-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .pricing-name {
+      font-size: 20px;
+      font-weight: 900;
+      margin: 0 0 8px;
+      letter-spacing: -0.5px;
+    }
+    .pricing-desc {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--text-sub);
+      line-height: 1.6;
+      margin: 0 0 24px;
+      min-height: 36px;
+    }
+    .pricing-card.featured .pricing-desc { color: rgba(255,255,255,0.5); }
+    .pricing-price {
+      font-size: 40px;
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .pricing-price-unit {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text-sub);
+    }
+    .pricing-card.featured .pricing-price-unit { color: rgba(255,255,255,0.5); }
+    .pricing-divider {
+      height: 1px;
+      background: #f0f0f0;
+      margin: 24px 0;
+    }
+    .pricing-card.featured .pricing-divider { background: rgba(255,255,255,0.1); }
+    .pricing-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 28px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .pricing-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text-main);
+    }
+    .pricing-card.featured .pricing-feature { color: rgba(255,255,255,0.85); }
+    .pricing-check {
+      width: 16px; height: 16px;
+      flex-shrink: 0;
+      margin-top: 1px;
+      color: var(--indigo);
+    }
+    .pricing-card.featured .pricing-check { color: #a5b4fc; }
+
+    /* FAQ */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 720px;
+    }
+    .faq-item {
+      background: #ffffff;
+      border: 1px solid #f0f0f0;
+      border-radius: 12px;
+      padding: 24px 28px;
+      transition: box-shadow .2s ease;
+    }
+    .faq-item:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+    .faq-q {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 0 0 10px;
+    }
+    .faq-q-mark {
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--indigo);
+      flex-shrink: 0;
+      padding-top: 1px;
+    }
+    .faq-a {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-sub);
+      line-height: 1.8;
+      margin: 0;
+      padding-left: 22px;
+    }
+
+    /* CTA */
+    .cta-section {
+      position: relative;
+      background: var(--dark-bg);
+      overflow: hidden;
+      padding: 96px 24px;
+      text-align: center;
+    }
+    .cta-blob-1 {
+      position: absolute;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: rgba(99,102,241,0.3);
+      filter: blur(80px);
+      top: -200px; right: -100px;
+      animation: blobFloat 8s ease-in-out infinite;
+    }
+    .cta-blob-2 {
+      position: absolute;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: rgba(236,72,153,0.2);
+      filter: blur(80px);
+      bottom: -150px; left: -80px;
+      animation: blobFloat 8s ease-in-out infinite;
+      animation-delay: -4s;
+    }
+    .cta-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .cta-heading {
+      font-size: clamp(28px, 5vw, 52px);
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: -2px;
+      line-height: 1.15;
+      margin: 0 0 20px;
+    }
+    .cta-sub {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.9;
+      margin: 0 0 40px;
+    }
+
+/* Footer */
+.footer {
+  background: var(--dark-nav);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 48px 24px 32px;
+}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.footer-logo {
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  text-decoration: none;
+}
+.footer-tagline {
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+  margin-top: 4px;
+}
+.footer-social {
+  display: flex;
+  gap: 20px;
+}
+.footer-social-link {
+  color: rgba(255,255,255,0.35);
+  font-size: 18px;
+  transition: color .2s ease;
+}
+.footer-social-link:hover { color: #ffffff; }
+.footer-copy {
+  max-width: 1200px;
+  margin: 24px auto 0;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding-top: 20px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.25);
+  text-align: center;
+}
+/* レスポンシブ */
+@media (max-width: 768px) {
+  /* Hero KPI */
+  .hero-kpi { gap: 24px; }
+  .hero-kpi-num { font-size: 28px; }
+
+  /* コンセプトセクション: 縦並び */
+  #concept .section > div[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* 見出しの letter-spacing 緩和 */
+  .section-heading { letter-spacing: -0.5px; }
+
+  /* フロー: 幅制限解除 */
+  .flow-list { max-width: 100%; }
+
+  /* 料金: 中央カードの scale 無効化（縦並び時はスペースが不要） */
+  .pricing-card.featured { transform: none; }
+  .pricing-card.featured:hover { transform: translateY(-4px); }
+
+  /* CTA 見出し */
+  .cta-heading { letter-spacing: -1px; }
+
+  /* Footer: 縦積み */
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 480px) {
+  .hero-h1 { letter-spacing: -1px; }
+  .btn-primary { padding: 14px 24px; font-size: 13px; }
+  .section { padding: 64px 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob, .cta-blob-1, .cta-blob-2, .marquee-track {
+    animation: none;
+  }
+  .reveal {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+  </style>
 </head>
 <body class="font-sans antialiased overflow-x-hidden">
 
@@ -108,15 +908,58 @@
                 <a href="#contact" class="block px-3 py-2 text-brand-accent font-bold text-sm">無料相談に申し込む</a>
             </div>
         </div>
-    </nav>
+        <h3 class="pain-title">何をどう発信すれば<br>正解なのかわからない</h3>
+        <p class="pain-body">他店との差別化ができず、アルゴリズムも理解できていない。MEOの上げ方もわからない。</p>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <!-- Hero Section -->
-    <section class="relative h-screen flex items-center justify-center">
-        <!-- Background Image -->
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&q=80&w=1920" alt="Restaurant Atmosphere" class="w-full h-full object-cover" />
-            <div class="absolute inset-0 hero-overlay"></div>
+<!-- Concept Section -->
+<div id="concept" class="section-bg-white section-wrap">
+  <div class="section">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:48px;align-items:center;" class="reveal">
+      <div>
+        <div style="aspect-ratio:4/5;border-radius:16px;overflow:hidden;position:relative;">
+          <img src="img/画像縦.png" alt="コンセプト" style="width:100%;height:100%;object-fit:cover;">
         </div>
+      </div>
+      <div>
+        <span class="section-label" style="color:var(--indigo);">CONCEPT</span>
+        <h2 class="section-heading">大田区の飲食店を<br>盛り上げる。</h2>
+        <p class="section-sub" style="margin-bottom:24px;">
+          今の時代の飲食店集客は、SNSでの認知、Googleマップ（MEO）での検索、スムーズな予約導線など、あらゆるデジタル接点を網羅することが必要です。
+        </p>
+        <p style="font-size:14px;font-weight:300;color:var(--text-sub);line-height:1.9;max-width:480px;margin:0 0 28px;">
+          私たちは、表層的な「映え」だけを追求するのではなく、ターゲットの心理を読み解き、MEOや予約導線とシームレスに連携。「集客・常連化の内製化」を目指すマーケティング支援を行います。
+        </p>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px;">
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:13px;font-weight:400;color:var(--text-main);">
+            <i data-lucide="check" style="width:16px;height:16px;color:var(--indigo);flex-shrink:0;margin-top:2px;"></i>
+            グルメ媒体（食べログ等）依存からの脱却と利益率の向上
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:13px;font-weight:400;color:var(--text-main);">
+            <i data-lucide="check" style="width:16px;height:16px;color:var(--indigo);flex-shrink:0;margin-top:2px;"></i>
+            SNS経由での認知拡大による、採用コスト・求人難の解消
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:13px;font-weight:400;color:var(--text-main);">
+            <i data-lucide="check" style="width:16px;height:16px;color:var(--indigo);flex-shrink:0;margin-top:2px;"></i>
+            トレンドを逃さない、最新アルゴリズムに基づいた運用戦略
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Services Section -->
+<div id="services" class="section-bg-white section-wrap">
+  <div class="section reveal">
+    <span class="section-label" style="color:var(--indigo);">OUR SERVICES</span>
+    <h2 class="section-heading">サービス提供価値</h2>
+    <p class="section-sub">
+      大田区エリアに特化しており、「大田区サンポット」という地域密着メディアを運営している強みをフルにご活用いただきます。
+    </p>
 
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div class="max-w-3xl fade-up">
@@ -137,10 +980,14 @@
                 </div>
             </div>
         </div>
+        <div class="service-num">01</div>
+        <h3 class="service-title">コンセプト＆ターゲット設計</h3>
+        <p class="service-body">「何を投稿するか」の前に「誰にどう思われたいか」を固めます。近隣住民、目的買いのディナー客、観光客など、ターゲットに合わせたアカウントの方向性と、競合にはない「貴店独自の価値」を明確にします。</p>
+      </div>
 
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
-            <i data-lucide="chevron-down" class="text-white/50 h-8 w-8"></i>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon">
+          <i data-lucide="camera" style="width:22px;height:22px;color:var(--purple);"></i>
         </div>
     </section>
 
@@ -185,205 +1032,44 @@
                 </div>
             </div>
         </div>
-    </section>
+        <div class="service-num">03</div>
+        <h3 class="service-title">MEO（Googleマップ）対策</h3>
+        <p class="service-body">Instagramで見つけたお店を、ユーザーはGoogleマップで検索します。MEO対策によりGoogleマップの検索順位を上げ、口コミ（星評価）獲得の仕組みを構築します。</p>
+      </div>
 
-    <!-- Concept Section -->
-    <section id="concept" class="py-24 bg-white relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col lg:flex-row items-center gap-16">
-                <div class="lg:w-1/2 relative fade-up">
-                    <div class="aspect-[4/5] relative overflow-hidden">
-                        <img src="img/画像縦.png" alt="Chef plating food" class="object-cover w-full h-full" />
-                    </div>
-                    <!-- Decorative element -->
-                    <div class="absolute -bottom-6 -right-6 w-48 h-48 bg-brand-light border border-brand-accent/20 -z-10"></div>
-                </div>
-                
-                <div class="lg:w-1/2 fade-up">
-                    <span class="text-brand-accent font-serif tracking-widest text-sm mb-2 block">CONCEPT</span>
-                    <h2 class="text-3xl md:text-4xl font-serif text-brand-dark mb-6 leading-tight">
-                        大田区の飲食店を盛り上げる。
-                    </h2>
-                    <p class="text-brand-text leading-loose mb-6 font-light">
-                        今の時代の飲食店集客は、SNSでの認知、Googleマップ（MEO）での検索、スムーズな予約導線などのあらゆるデジタル接点を網羅することが必要です。
-                    </p>
-                    <p class="text-brand-text leading-loose mb-8 font-light">
-                        私たちは、表層的な「映え」だけを追求するのではなく、ターゲットの心理を読み解き、Googleマップ（MEO）や予約導線とシームレスに連携。「集客・常連化の内製化」を目指すマーケティング支援を行います。
-                    </p>
-                    
-                    <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <i data-lucide="check" class="h-5 w-5 text-brand-accent mt-1 mr-3 flex-shrink-0"></i>
-                            <span class="text-brand-dark font-medium">グルメ媒体（食べログ等）依存からの脱却と利益率の向上</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i data-lucide="check" class="h-5 w-5 text-brand-accent mt-1 mr-3 flex-shrink-0"></i>
-                            <span class="text-brand-dark font-medium">SNS経由での認知拡大による、採用コスト・求人難の解消</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i data-lucide="check" class="h-5 w-5 text-brand-accent mt-1 mr-3 flex-shrink-0"></i>
-                            <span class="text-brand-dark font-medium">トレンドを逃さない、最新アルゴリズムに基づいた運用戦略</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon">
+          <i data-lucide="users" style="width:22px;height:22px;color:var(--indigo);"></i>
         </div>
-    </section>
+        <div class="service-num">04</div>
+        <h3 class="service-title">アセットとしての常連客作り</h3>
+        <p class="service-body">新規集客だけでなく、LTV（顧客生涯価値）を高めます。ストーリーズを活用した双方向コミュニケーションや、LINE公式アカウントへの誘導設計により、来店客を「ファン」へと育成します。</p>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <!-- Services Section -->
-    <section id="services" class="py-24 bg-brand-dark text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 fade-up">
-                <span class="text-brand-accent font-serif tracking-widest text-sm mb-2 block">OUR SERVICES</span>
-                <h2 class="text-3xl md:text-4xl font-serif mb-4">サービス提供価値</h2>
-                <div class="h-px w-16 bg-brand-accent mx-auto mb-4"></div>
-                <p class="text-gray-300 mb-10 text-sm md:text-base leading-relaxed">
-                    大田区エリアに特化しており、「大田区サンポット」という地域密着メディアを運営している強みをフルにご活用いただきます。
-                </p>
-            </div>
+<!-- Flow Section -->
+<div id="flow" class="section-bg-white section-wrap">
+  <div class="section reveal">
+    <span class="section-label" style="color:var(--indigo);">HOW IT WORKS</span>
+    <h2 class="section-heading">導入から運用までの流れ</h2>
+    <p class="section-sub">プロフェッショナルとして、確実な立ち上げと成果への最短距離を伴走します。</p>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
-                <!-- Service 1 -->
-                <div class="flex flex-col sm:flex-row gap-6 fade-up">
-                    <div class="flex-shrink-0">
-                        <div class="w-16 h-16 rounded-sm border border-brand-accent/30 flex items-center justify-center bg-white/5">
-                            <i data-lucide="target" class="h-8 w-8 text-brand-accent"></i>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-serif mb-3">1. コンセプト＆ターゲット設計</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                            「何を投稿するか」の前に「誰にどう思われたいか」を固めます。近隣住民、目的買いのディナー客、観光客など、ターゲットに合わせたアカウントの方向性と、競合にはない「貴店独自の価値」を明確にします。
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Service 2 -->
-                <div class="flex flex-col sm:flex-row gap-6 fade-up">
-                    <div class="flex-shrink-0">
-                        <div class="w-16 h-16 rounded-sm border border-brand-accent/30 flex items-center justify-center bg-white/5">
-                            <i data-lucide="camera" class="h-8 w-8 text-brand-accent"></i>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-serif mb-3">2. 「勝てる」クリエイティブ制作</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                            飲食店のSNSは視覚が9割。湯気、肉汁、ソースのシズル感を最大限に引き出す撮影技術の提供や、最新のアルゴリズムに乗るショート動画（Reels/TikTok）の企画・編集を行います。
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Service 3 -->
-                <div class="flex flex-col sm:flex-row gap-6 fade-up">
-                    <div class="flex-shrink-0">
-                        <div class="w-16 h-16 rounded-sm border border-brand-accent/30 flex items-center justify-center bg-white/5">
-                            <i data-lucide="map-pin" class="h-8 w-8 text-brand-accent"></i>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-serif mb-3">3. MEO（Googleマップ）対策</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                            Instagramで見つけたお店を、ユーザーはGoogleマップで検索します。MEO対策により、Googleマップの検索順位を上げ、さらに口コミ（星評価）獲得の仕組みを構築します。
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Service 4 -->
-                <div class="flex flex-col sm:flex-row gap-6 fade-up">
-                    <div class="flex-shrink-0">
-                        <div class="w-16 h-16 rounded-sm border border-brand-accent/30 flex items-center justify-center bg-white/5">
-                            <i data-lucide="users" class="h-8 w-8 text-brand-accent"></i>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-serif mb-3">4. アセット（資産）としての常連客作り</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                            新規集客だけでなく、LTV（顧客生涯価値）を高めます。ストーリーズを活用した双方向コミュニケーションや、LINE公式アカウントへの誘導設計により、一度来店したお客様を「ファン」へと育成します。
-                        </p>
-                    </div>
-                </div>
-            </div>
+    <div class="flow-list">
+      <div class="flow-item reveal">
+        <div class="flow-num">1</div>
+        <div>
+          <h3 class="flow-title">キックオフ・現状分析</h3>
+          <p class="flow-body">現場の状況を言語化。客層、人気メニューの掘り起こし、ターゲットの再定義を行います。</p>
         </div>
-    </section>
+      </div>
 
-    <!-- Flow Section -->
-    <section id="flow" class="py-24 bg-brand-light">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-20 fade-up">
-                <span class="text-brand-accent font-serif tracking-widest text-sm mb-2 block">HOW IT WORKS</span>
-                <h2 class="text-3xl md:text-4xl font-serif text-brand-dark mb-4">導入から運用までの流れ</h2>
-                <div class="h-px w-16 bg-brand-accent mx-auto mb-6"></div>
-                <p class="text-brand-muted font-light">プロフェッショナルとして、確実な立ち上げと成果への最短距離を伴走します。</p>
-            </div>
-
-            <div class="relative">
-                <!-- Vertical Line (Desktop) -->
-                <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-px h-full bg-gray-300"></div>
-
-                <div class="space-y-12 md:space-y-0">
-                    <!-- Step 1 -->
-                    <div class="relative flex flex-col md:flex-row items-center justify-between fade-up">
-                        <div class="md:w-5/12 order-2 md:order-1 text-center md:text-right pr-0 md:pr-8 mt-6 md:mt-0">
-                            <h3 class="text-xl font-bold text-brand-dark mb-2">キックオフ・現状分析</h3>
-                            <p class="text-sm text-brand-muted leading-relaxed">現場の状況を言語化。客層、人気メニューの掘り起こし、ターゲットの再定義を行います。</p>
-                        </div>
-                        <div class="md:w-2/12 order-1 md:order-2 flex justify-center z-10">
-                            <div class="w-12 h-12 rounded-full bg-brand-dark text-white flex items-center justify-center font-serif text-xl border-4 border-brand-light shadow-md">1</div>
-                        </div>
-                        <div class="md:w-5/12 order-3 md:order-3"></div>
-                    </div>
-
-                    <!-- Step 2 -->
-                    <div class="relative flex flex-col md:flex-row items-center justify-between fade-up md:mt-16">
-                        <div class="md:w-5/12 order-3 md:order-1"></div>
-                        <div class="md:w-2/12 order-1 md:order-2 flex justify-center z-10">
-                            <div class="w-12 h-12 rounded-full bg-brand-dark text-white flex items-center justify-center font-serif text-xl border-4 border-brand-light shadow-md">2</div>
-                        </div>
-                        <div class="md:w-5/12 order-2 md:order-3 text-center md:text-left pl-0 md:pl-8 mt-6 md:mt-0">
-                            <h3 class="text-xl font-bold text-brand-dark mb-2">SNSコンセプト設計・アカウント最適化</h3>
-                            <p class="text-sm text-brand-muted leading-relaxed">SNSプロフィール改修、予約導線（リンクツリー）の整備、ハイライトの整理等を行います。</p>
-                        </div>
-                    </div>
-
-                    <!-- Step 3 -->
-                    <div class="relative flex flex-col md:flex-row items-center justify-between fade-up md:mt-16">
-                        <div class="md:w-5/12 order-2 md:order-1 text-center md:text-right pr-0 md:pr-8 mt-6 md:mt-0">
-                            <h3 class="text-xl font-bold text-brand-dark mb-2">クリエイティブ制作・投稿</h3>
-                            <p class="text-sm text-brand-muted leading-relaxed">シズル感のある写真・動画の撮影。弊社運営アカウントと併せて貴店SNSでの投稿を開始します。</p>
-                        </div>
-                        <div class="md:w-2/12 order-1 md:order-2 flex justify-center z-10">
-                            <div class="w-12 h-12 rounded-full bg-brand-dark text-white flex items-center justify-center font-serif text-xl border-4 border-brand-light shadow-md">3</div>
-                        </div>
-                        <div class="md:w-5/12 order-3 md:order-3"></div>
-                    </div>
-
-                    <!-- Step 4 -->
-                    <div class="relative flex flex-col md:flex-row items-center justify-between fade-up md:mt-16">
-                        <div class="md:w-5/12 order-3 md:order-1"></div>
-                        <div class="md:w-2/12 order-1 md:order-2 flex justify-center z-10">
-                            <div class="w-12 h-12 rounded-full bg-brand-dark text-white flex items-center justify-center font-serif text-xl border-4 border-brand-light shadow-md">4</div>
-                        </div>
-                        <div class="md:w-5/12 order-2 md:order-3 text-center md:text-left pl-0 md:pl-8 mt-6 md:mt-0">
-                            <h3 class="text-xl font-bold text-brand-dark mb-2">UGC（口コミ）発生の仕掛け作り</h3>
-                            <p class="text-sm text-brand-muted leading-relaxed">お客様が思わず写真を撮りたくなる店内導線の改善、卓上POPの設置。メンションへの反応ルール化。</p>
-                        </div>
-                    </div>
-
-                    <!-- Step 5 -->
-                    <div class="relative flex flex-col md:flex-row items-center justify-between fade-up md:mt-16">
-                        <div class="md:w-5/12 order-2 md:order-1 text-center md:text-right pr-0 md:pr-8 mt-6 md:mt-0">
-                            <h3 class="text-xl font-bold text-brand-dark mb-2">効果確認とブラッシュアップ</h3>
-                            <p class="text-sm text-brand-muted leading-relaxed">リピーター創出・ブランディング向上のための企画立案〜実行のPDCAを回します。</p>
-                        </div>
-                        <div class="md:w-2/12 order-1 md:order-2 flex justify-center z-10">
-                            <div class="w-12 h-12 rounded-full bg-brand-accent text-white flex items-center justify-center font-serif text-xl border-4 border-brand-light shadow-md">
-                                <i data-lucide="check" class="h-6 w-6"></i>
-                            </div>
-                        </div>
-                        <div class="md:w-5/12 order-3 md:order-3"></div>
-                    </div>
-                </div>
-            </div>
+      <div class="flow-item reveal reveal-delay-1">
+        <div class="flow-num">2</div>
+        <div>
+          <h3 class="flow-title">SNSコンセプト設計・アカウント最適化</h3>
+          <p class="flow-body">SNSプロフィール改修、予約導線（リンクツリー）の整備、ハイライトの整理等を行います。</p>
         </div>
     </section>
 
@@ -616,22 +1302,25 @@
                 </a>
             </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <!-- Footer -->
-    <footer class="bg-[#111111] py-12 border-t border-white/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
-            <div class="mb-6 md:mb-0">
-                <span class="font-serif text-2xl text-white tracking-wider">GURUMA<span class="text-brand-accent">.</span></span>
-                <p class="text-gray-500 text-sm mt-2">飲食店特化型マーケティング支援</p>
-            </div>
-            <div class="flex space-x-6">
-                <a href="https://www.instagram.com/rino._ohtaku/" class="text-gray-500 hover:text-white transition-colors" target="_blank"><i class="h-5 w-5 fa-brands fa-instagram"></i></a>
-                <a href="https://www.tiktok.com/@rino_ohtaku" class="text-gray-500 hover:text-white transition-colors" target="_blank"><i class="h-5 w-5 fa-brands fa-tiktok"></i></a>
-                <a href="https://www.youtube.com/@otakusanpot2503" class="text-gray-500 hover:text-white transition-colors" target="_blank"><i class="h-5 w-5 fa-brands fa-youtube"></i></a>
-                <a href="https://line.me/R/ti/p/@732pcdtl?oat_content=url&ts=11221245" class="text-gray-500 hover:text-white transition-colors" target="_blank"><i class="h-5 w-5 fa-brands fa-line"></i></a>
-                <a href="https://ota-sanpot.com/" class="text-gray-500 hover:text-white transition-colors" target="_blank"><i class="h-5 w-5 fa-solid fa-globe"></i></a>
-            </div>
+<!-- Cases Section -->
+<div id="cases" class="section-bg-light section-wrap">
+  <div class="section reveal">
+    <span class="section-label" style="color:var(--indigo);">CASE STUDY</span>
+    <h2 class="section-heading">支援実績・事例</h2>
+    <p class="section-sub">単なるSNS運用にとどまらず、店舗に合わせた具体的な施策をご提案し、確かな集客・売上アップに貢献しています。</p>
+
+    <div class="case-grid">
+      <div class="case-card reveal reveal-delay-1">
+        <div class="case-tag">イタリアンバル / 居酒屋</div>
+        <h3 class="case-title">「週末限定メニュー」の考案で<br>週末の来客数が約1.5倍に増加</h3>
+        <div class="case-block">
+          <div class="case-block-label">施策内容</div>
+          <p class="case-block-body">週末の集客に課題を抱えていた店舗様に対し、特別感のある「週末限定メニュー」を提案・共同開発。そのメニューの魅力を最大限に引き出すシズル感のある写真とショート動画を制作し、事前告知を含めてInstagramで集中的に発信しました。</p>
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 text-center md:text-left flex flex-col md:flex-row justify-between items-center">
             <p class="text-gray-600 text-xs">&copy; 2026 大田区サンポット. All rights reserved.</p>
@@ -640,57 +1329,216 @@
                 <!-- <a href="#" class="hover:text-gray-400">特定商取引法に基づく表記</a> -->
             </div>
         </div>
-    </footer>
+      </div>
 
-    <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
+      <div class="case-card reveal reveal-delay-2">
+        <div class="case-tag">大衆居酒屋 / バル</div>
+        <h3 class="case-title">「写真映え」する新メニュー開発で<br>20〜30代の新規予約が急増</h3>
+        <div class="case-block">
+          <div class="case-block-label">施策内容</div>
+          <p class="case-block-body">客層が固定化しており、若年層の新規獲得が課題でした。そこで、既存の食材を活用しつつインパクトのある「写真映え」する新メニューを考案し、Reels動画を活用してアピールを行いました。</p>
+        </div>
+        <div class="case-block">
+          <div class="case-block-label">結果</div>
+          <p class="case-block-body">若年層をターゲットにした動画のリーチ数が跳ね上がり、短期間でフォロワーが急増。20代〜30代の若年層からの予約殺到に繋がり、平日ディナー帯も満席になる日が増えました。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('bg-brand-dark/95', 'backdrop-blur-sm', 'border-b', 'border-white/10', 'py-0');
-                navbar.classList.remove('bg-transparent', 'border-transparent', 'py-2');
-            } else {
-                navbar.classList.add('bg-transparent', 'border-transparent', 'py-2');
-                navbar.classList.remove('bg-brand-dark/95', 'backdrop-blur-sm', 'border-b', 'border-white/10', 'py-0');
-            }
-        });
+<!-- Pricing Section -->
+<div id="pricing" class="section-bg-light section-wrap">
+  <div class="section reveal">
+    <div style="text-align:center;max-width:540px;margin:0 auto 56px;">
+      <span class="section-label" style="color:var(--indigo);">PLANS</span>
+      <h2 class="section-heading">料金プラン</h2>
+      <p style="font-size:14px;font-weight:300;color:var(--text-sub);line-height:1.8;margin:0;">お店の状況やリソースに合わせた3つのプランをご用意しています。</p>
+    </div>
 
-        // Mobile menu toggle
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
+    <div class="pricing-grid">
+      <!-- Plan 1 -->
+      <div class="pricing-card reveal reveal-delay-1">
+        <div class="pricing-card-label" style="color:var(--text-sub);">BASIC</div>
+        <h3 class="pricing-name">伴走アドバイザー</h3>
+        <p class="pricing-desc">自社で投稿スタッフがいる店舗様向け</p>
+        <div class="pricing-price">¥50,000<span class="pricing-price-unit"> / 月</span></div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li class="pricing-feature"><i data-lucide="check" class="pricing-check"></i>月1回のオンライン定例ミーティング</li>
+          <li class="pricing-feature"><i data-lucide="check" class="pricing-check"></i>チャットでの随時相談（無制限）</li>
+          <li class="pricing-feature"><i data-lucide="check" class="pricing-check"></i>投稿内容・ハッシュタグの添削</li>
+          <li class="pricing-feature"><i data-lucide="check" class="pricing-check"></i>最新トレンド情報の共有</li>
+        </ul>
+        <a href="#contact" class="btn-outline" style="width:100%;">相談する</a>
+      </div>
 
-        // Close mobile menu on link click
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.add('hidden');
-            });
-        });
+      <!-- Plan 2 (Featured) -->
+      <div class="pricing-card featured reveal">
+        <div class="pricing-card-label featured-label">RECOMMENDED</div>
+        <h3 class="pricing-name" style="color:#ffffff;">スタンダード運用</h3>
+        <p class="pricing-desc">忙しくて運用する時間がない店舗様向け</p>
+        <div class="pricing-price grad-text-light">¥100,000<span style="font-size:14px;font-weight:400;background:none;-webkit-text-fill-color:rgba(255,255,255,0.5);"> / 月</span></div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li class="pricing-feature"><i data-lucide="check" class="pricing-check"></i>戦略策定・アカウント設計</li>
+          <li class="pricing-feature"><i data-lucide="check" class="pricing-check"></i>フィード/リール投稿代行（月10回目安）</li>
+          <li class="pricing-feature"><i data-lucide="check" class="pricing-check"></i>キャプション・ハッシュタグ作成</li>
+          <li class="pricing-feature"><i data-lucide="check" class="pricing-check"></i>月次レポート提出＆改善提案</li>
+          <li class="pricing-feature"><i data-lucide="check" class="pricing-check"></i>MEO（Googleマップ）対策</li>
+        </ul>
+        <a href="#contact" class="btn-primary" style="width:100%;">相談する</a>
+      </div>
 
-        // Scroll Animation (Intersection Observer)
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
+      <!-- Plan 3 -->
+      <div class="pricing-card reveal reveal-delay-2">
+        <div class="pricing-card-label" style="color:var(--text-sub);">PREMIUM</div>
+        <h3 class="pricing-name">フルコミット集客</h3>
+        <p class="pricing-desc">最速でエリアNo.1を目指す店舗様向け</p>
+        <div class="pricing-price">¥150,000〜<span class="pricing-price-unit"> / 月</span></div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li class="pricing-feature"><i data-lucide="check" class="pricing-check"></i>スタンダード運用の全内容</li>
+          <li class="pricing-feature"><i data-lucide="check" class="pricing-check"></i>現地撮影（月1回）</li>
+          <li class="pricing-feature"><i data-lucide="check" class="pricing-check"></i>SNS（Instagram）運用代行</li>
+          <li class="pricing-feature"><i data-lucide="check" class="pricing-check"></i>インフルエンサーキャスティング手配</li>
+          <li class="pricing-feature"><i data-lucide="check" class="pricing-check"></i>LINE構築・運用サポート</li>
+        </ul>
+        <a href="#contact" class="btn-outline" style="width:100%;">相談する</a>
+      </div>
+    </div>
 
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target); // 一度発火したら監視を解除
-                }
-            });
-        }, observerOptions);
+    <p style="text-align:center;font-size:12px;color:var(--text-sub);margin-top:24px;">
+      ※料金は全て税抜き価格です。※最低契約期間は原則6ヶ月〜となります。
+    </p>
+  </div>
+</div>
 
-        document.querySelectorAll('.fade-up').forEach((elem) => {
-            observer.observe(elem);
-        });
-    </script>
+<!-- FAQ Section -->
+<div id="faq" class="section-bg-light section-wrap">
+  <div class="section reveal">
+    <span class="section-label" style="color:var(--indigo);">FAQ</span>
+    <h2 class="section-heading">よくある質問</h2>
+    <p class="section-sub">よくいただくご質問をまとめました。</p>
+
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <div class="faq-q"><span class="faq-q-mark">Q.</span><span>どのくらいの期間で効果が出ますか？</span></div>
+        <p class="faq-a">業態や現在の状況等にもよりますが、目安として3〜6ヶ月程度でフォロワー数や来店数の変化をご実感いただくケースが多いです。短期的な「バズ」ではなく、中長期での安定した集客基盤づくりを重視しています。</p>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q"><span class="faq-q-mark">Q.</span><span>SNSの知識がなくても大丈夫でしょうか？</span></div>
+        <p class="faq-a">はい、問題ございません。難しい専門用語はできるだけ使わず、現場のスタッフの方にも伝わりやすい形でご説明します。運用を内製化したい場合も、投稿のポイントや撮影のコツなどを丁寧にお伝えします。</p>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q"><span class="faq-q-mark">Q.</span><span>大田区以外の店舗でも依頼できますか？</span></div>
+        <p class="faq-a">大田区の飲食店様を中心にサポートしておりますが、オンラインでのご支援が可能な場合は、近隣エリアや都内他区の店舗様もご相談いただけます。まずは無料相談フォームより現状をお聞かせください。</p>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q"><span class="faq-q-mark">Q.</span><span>最低契約期間はありますか？</span></div>
+        <p class="faq-a">原則として6ヶ月〜のご契約をお願いしております。短期間の施策で終わらせるのではなく、データ検証と改善を繰り返しながら、持続的な集客につながる仕組みづくりを行うためです。</p>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q"><span class="faq-q-mark">Q.</span><span>チェーン店でも利用可能ですか？</span></div>
+        <p class="faq-a">もちろん可能です。チェーン店ならではの強みを含めて訴求と来客に繋げる支援をさせていただきます。</p>
+      </div>
+    </div>
+
+    <div style="margin-top:40px;max-width:720px;">
+      <p style="font-size:12px;color:var(--text-sub);margin-bottom:16px;">上記以外のご不明点があれば、お気軽にお問い合わせください。</p>
+      <a href="#contact" class="btn-outline">無料相談フォームへ</a>
+    </div>
+  </div>
+</div>
+
+<!-- CTA Section -->
+<section id="contact" class="cta-section">
+  <div class="cta-blob-1"></div>
+  <div class="cta-blob-2"></div>
+  <div class="cta-inner reveal">
+    <h2 class="cta-heading">まずは現状を<br><span class="grad-text-light">無料で診断しませんか？</span></h2>
+    <p class="cta-sub">
+      「ウチのお店でも効果は出る？」「現状の何がダメなの？」<br>
+      些細な疑問でも構いません。プロの視点から、改善の余地と可能性をお伝えします。
+    </p>
+    <a href="https://forms.gle/4CSXeg88fuyGUPR69" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:15px;padding:18px 44px;">
+      <i class="fa-regular fa-pen-to-square" style="margin-right:10px;"></i>
+      無料診断に申し込む
+    </a>
+    <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:16px;">※専用の回答フォームへ移動します</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <a href="#" class="footer-logo grad-text">GURUMA</a>
+      <p class="footer-tagline">飲食店特化型マーケティング支援</p>
+    </div>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/rino._ohtaku/" class="footer-social-link" target="_blank" rel="noopener" aria-label="Instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://www.tiktok.com/@rino_ohtaku" class="footer-social-link" target="_blank" rel="noopener" aria-label="TikTok">
+        <i class="fa-brands fa-tiktok"></i>
+      </a>
+      <a href="https://www.youtube.com/@otakusanpot2503" class="footer-social-link" target="_blank" rel="noopener" aria-label="YouTube">
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+      <a href="https://line.me/R/ti/p/@732pcdtl?oat_content=url&ts=11221245" class="footer-social-link" target="_blank" rel="noopener" aria-label="LINE公式">
+        <i class="fa-brands fa-line"></i>
+      </a>
+      <a href="https://ota-sanpot.com/" class="footer-social-link" target="_blank" rel="noopener" aria-label="公式サイト">
+        <i class="fa-solid fa-globe"></i>
+      </a>
+    </div>
+  </div>
+  <div class="footer-copy">&copy; 2026 大田区サンポット. All rights reserved.</div>
+</footer>
+
+<script>
+  // Lucide アイコン初期化
+  lucide.createIcons();
+
+  // モバイルメニュー開閉
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu    = document.getElementById('mobile-menu');
+  mobileMenuBtn.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    mobileMenuBtn.setAttribute('aria-expanded', String(isOpen));
+  });
+  document.querySelectorAll('#mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // ナビゲーション スクロール時に影を付ける
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  // スクロールフェードイン（IntersectionObserver）
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+  );
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
 </body>
 </html>
