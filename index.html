@@ -478,6 +478,57 @@
       margin-bottom: 20px;
       background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(236,72,153,0.12));
     }
+
+    /* 導入フロー */
+    .flow-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+      max-width: 640px;
+    }
+    .flow-item {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      position: relative;
+      padding-bottom: 40px;
+    }
+    .flow-item:last-child { padding-bottom: 0; }
+    .flow-item:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 44px;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, rgba(99,102,241,0.3), transparent);
+    }
+    .flow-num {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--grad-main);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 900;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 16px rgba(99,102,241,0.4);
+    }
+    .flow-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin: 0 0 6px;
+      padding-top: 10px;
+    }
+    .flow-body {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-sub);
+      line-height: 1.8;
+      margin: 0;
+    }
   </style>
 </head>
 <body class="antialiased">
@@ -711,6 +762,59 @@
         <div class="service-num">04</div>
         <h3 class="service-title">アセットとしての常連客作り</h3>
         <p class="service-body">新規集客だけでなく、LTV（顧客生涯価値）を高めます。ストーリーズを活用した双方向コミュニケーションや、LINE公式アカウントへの誘導設計により、来店客を「ファン」へと育成します。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Flow Section -->
+<div id="flow" class="section-bg-white section-wrap">
+  <div class="section reveal">
+    <span class="section-label" style="color:var(--indigo);">HOW IT WORKS</span>
+    <h2 class="section-heading">導入から運用までの流れ</h2>
+    <p class="section-sub">プロフェッショナルとして、確実な立ち上げと成果への最短距離を伴走します。</p>
+
+    <div class="flow-list">
+      <div class="flow-item reveal reveal-delay-1">
+        <div class="flow-num">1</div>
+        <div>
+          <h3 class="flow-title">キックオフ・現状分析</h3>
+          <p class="flow-body">現場の状況を言語化。客層、人気メニューの掘り起こし、ターゲットの再定義を行います。</p>
+        </div>
+      </div>
+
+      <div class="flow-item reveal reveal-delay-1">
+        <div class="flow-num">2</div>
+        <div>
+          <h3 class="flow-title">SNSコンセプト設計・アカウント最適化</h3>
+          <p class="flow-body">SNSプロフィール改修、予約導線（リンクツリー）の整備、ハイライトの整理等を行います。</p>
+        </div>
+      </div>
+
+      <div class="flow-item reveal reveal-delay-1">
+        <div class="flow-num">3</div>
+        <div>
+          <h3 class="flow-title">クリエイティブ制作・投稿</h3>
+          <p class="flow-body">シズル感のある写真・動画の撮影。弊社運営アカウントと併せて貴店SNSでの投稿を開始します。</p>
+        </div>
+      </div>
+
+      <div class="flow-item reveal reveal-delay-1">
+        <div class="flow-num">4</div>
+        <div>
+          <h3 class="flow-title">UGC（口コミ）発生の仕掛け作り</h3>
+          <p class="flow-body">お客様が思わず写真を撮りたくなる店内導線の改善、卓上POPの設置。メンションへの反応ルール化。</p>
+        </div>
+      </div>
+
+      <div class="flow-item reveal reveal-delay-1">
+        <div class="flow-num">
+          <i data-lucide="check" style="width:18px;height:18px;"></i>
+        </div>
+        <div>
+          <h3 class="flow-title">効果確認とブラッシュアップ</h3>
+          <p class="flow-body">リピーター創出・ブランディング向上のための企画立案〜実行のPDCAを回します。</p>
+        </div>
       </div>
     </div>
   </div>
