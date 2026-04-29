@@ -1,709 +1,150 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GURUMA｜大田区飲食店特化型マーケティングコンサルティング</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="icon" href="img/favicon.ico">
-    <link rel="apple-touch-icon" href="img/favicon.ico">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Noto Sans JP"', 'sans-serif'],
-                        serif: ['"Noto Serif JP"', 'serif'],
-                    },
-                    colors: {
-                        brand: {
-                            dark: '#1A1A1A',
-                            light: '#FAF8F5',
-                            accent: '#C5A880', // 洗練されたゴールド/ベージュ
-                            text: '#333333',
-                            muted: '#888888'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body {
-            background-color: #FAF8F5;
-            color: #333333;
-        }
-        /* スクロールアニメーション用のクラス */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .fade-up.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .hero-overlay {
-            background: linear-gradient(to right, rgba(26, 26, 26, 0.9) 0%, rgba(26, 26, 26, 0.4) 100%);
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GURUMA｜大田区飲食店特化型SNS×MEOコンサルティング</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="icon" href="img/favicon.ico">
+  <link rel="apple-touch-icon" href="img/favicon.ico">
+  <style>
+    :root {
+      --indigo:    #6366f1;
+      --purple:    #7c3aed;
+      --pink:      #ec4899;
+      --dark-bg:   #09090b;
+      --dark-nav:  #040407;
+      --light-bg:  #fafafa;
+      --text-main: #0f0f0f;
+      --text-sub:  #777777;
+      --grad-main: linear-gradient(135deg, #6366f1, #7c3aed, #ec4899);
+      --grad-text: linear-gradient(135deg, #a5b4fc, #f9a8d4);
+    }
 
-        .gold-gradient-text {
-            background: linear-gradient(135deg, #D4AF37 0%, #AA7C11 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    * { box-sizing: border-box; }
 
-        /* カスタムスクロールバー */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #FAF8F5;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #C5A880;
-            border-radius: 4px;
-        }
-    </style>
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--light-bg);
+      color: var(--text-main);
+      overflow-x: hidden;
+      margin: 0;
+    }
+
+    /* グラデーションテキスト */
+    .grad-text {
+      background: var(--grad-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .grad-text-light {
+      background: var(--grad-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* プライマリボタン */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      padding: 15px 34px;
+      border-radius: 100px;
+      box-shadow: 0 8px 40px rgba(99,102,241,0.5);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 48px rgba(99,102,241,0.6);
+    }
+
+    /* ゴーストボタン（ダーク背景用） */
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      color: rgba(255,255,255,0.85);
+      border-bottom: 1px solid rgba(255,255,255,0.5);
+      font-size: 13px;
+      font-weight: 400;
+      text-decoration: none;
+      padding-bottom: 2px;
+      transition: color .2s ease;
+      background: none;
+      cursor: pointer;
+    }
+    .btn-ghost:hover { color: #ffffff; }
+
+    /* アウトラインボタン（ライト背景用） */
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid #e5e7eb;
+      color: #0f0f0f;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 12px 28px;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: background .2s ease, color .2s ease;
+    }
+    .btn-outline:hover { background: #0f0f0f; color: #fff; }
+
+    /* セクションラベル */
+    .section-label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .section-label::before {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 2px;
+      background: var(--grad-main);
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+
+    /* スクロールフェードイン */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+
+    /* スクロールバー */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--light-bg); }
+    ::-webkit-scrollbar-thumb { background: var(--indigo); border-radius: 3px; }
+  </style>
 </head>
-<body class="font-sans antialiased overflow-x-hidden">
+<body class="antialiased">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 transition-all duration-300 bg-brand-dark/95 backdrop-blur-sm border-b border-white/10" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0 flex items-center">
-                    <span class="font-serif text-2xl text-white tracking-wider">GURUMA<span class="text-brand-accent">.</span></span>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#concept" class="text-gray-300 hover:text-brand-accent transition-colors text-sm tracking-widest">コンセプト</a>
-                    <a href="#services" class="text-gray-300 hover:text-brand-accent transition-colors text-sm tracking-widest">サービス</a>
-                    <a href="#flow" class="text-gray-300 hover:text-brand-accent transition-colors text-sm tracking-widest">導入の流れ</a>
-                    <a href="#cases" class="text-gray-300 hover:text-brand-accent transition-colors text-sm tracking-widest">実績・事例</a>
-                    <a href="#pricing" class="text-gray-300 hover:text-brand-accent transition-colors text-sm tracking-widest">料金プラン</a>
-                    <a href="#faq" class="text-gray-300 hover:text-brand-accent transition-colors text-sm tracking-widest">よくある質問</a>
-                    <a href="#contact" class="bg-brand-accent text-white px-6 py-2.5 rounded-sm hover:bg-yellow-700 transition-colors text-sm tracking-widest">無料相談に申し込む</a>
-                </div>
-                <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-white hover:text-brand-accent">
-                        <i data-lucide="menu" class="h-6 w-6"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-brand-dark border-t border-white/10">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#concept" class="block px-3 py-2 text-gray-300 hover:text-brand-accent text-sm">コンセプト</a>
-                <a href="#services" class="block px-3 py-2 text-gray-300 hover:text-brand-accent text-sm">サービス</a>
-                <a href="#flow" class="block px-3 py-2 text-gray-300 hover:text-brand-accent text-sm">導入の流れ</a>
-                <a href="#cases" class="block px-3 py-2 text-gray-300 hover:text-brand-accent text-sm">実績・事例</a>
-                <a href="#pricing" class="block px-3 py-2 text-gray-300 hover:text-brand-accent text-sm">料金プラン</a>
-                <a href="#faq" class="block px-3 py-2 text-gray-300 hover:text-brand-accent text-sm">よくある質問</a>
-                <a href="#contact" class="block px-3 py-2 text-brand-accent font-bold text-sm">無料相談に申し込む</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="relative h-screen flex items-center justify-center">
-        <!-- Background Image -->
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&q=80&w=1920" alt="Restaurant Atmosphere" class="w-full h-full object-cover" />
-            <div class="absolute inset-0 hero-overlay"></div>
-        </div>
-
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div class="max-w-3xl fade-up">
-                <p class="text-brand-accent font-serif tracking-[0.2em] mb-4 text-sm md:text-base">大田区飲食店特化型マーケティング支援</p>
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif text-white leading-tight mb-8">
-                    <span class="block mb-5">「美味しい」を、</span>
-                    <span class="block">大田区にしっかり届ける</span>
-                </h1>
-                <p class="text-gray-300 text-base md:text-lg mb-10 leading-relaxed font-light max-w-2xl">
-                    見つけてもらえなければ、届かない。<br>
-                    認知から来店に繋げる集客基盤を構築します。
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#contact" class="inline-flex justify-center items-center bg-brand-accent text-white px-8 py-4 text-sm tracking-widest hover:bg-yellow-700 transition-colors duration-300">
-                        まずは無料相談してみる
-                        <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
-            <i data-lucide="chevron-down" class="text-white/50 h-8 w-8"></i>
-        </div>
-    </section>
-
-    <!-- Problem Section -->
-    <section class="py-24 bg-brand-light">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 fade-up">
-                <h2 class="text-3xl font-serif text-brand-dark mb-4">こんなお悩みはありませんか？</h2>
-                <div class="h-px w-16 bg-brand-accent mx-auto"></div>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Problem 1 -->
-                <div class="bg-white p-8 border border-gray-100 shadow-sm fade-up text-center">
-                    <div class="w-16 h-16 rounded-full bg-brand-light flex items-center justify-center mx-auto mb-6">
-                        <i data-lucide="trending-down" class="h-8 w-8 text-brand-accent"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 text-brand-dark">フォロワーが増えず<br>来店に繋がらない</h3>
-                    <p class="text-brand-muted text-sm leading-relaxed">
-                        SNSを始めたが、実際の売上や予約数に変化がなく、SNS運用の効果を実感できていない。
-                    </p>
-                </div>
-                <!-- Problem 2 -->
-                <div class="bg-white p-8 border border-gray-100 shadow-sm fade-up text-center transition-delay-100">
-                    <div class="w-16 h-16 rounded-full bg-brand-light flex items-center justify-center mx-auto mb-6">
-                        <i data-lucide="clock" class="h-8 w-8 text-brand-accent"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 text-brand-dark">日々の営業が忙しく<br>運用する時間がない</h3>
-                    <p class="text-brand-muted text-sm leading-relaxed">
-                        投稿用の写真撮影や文章作成に時間がかかり、更新が滞りがち。専任スタッフを雇う余裕もない。
-                    </p>
-                </div>
-                <!-- Problem 3 -->
-                <div class="bg-white p-8 border border-gray-100 shadow-sm fade-up text-center transition-delay-200">
-                    <div class="w-16 h-16 rounded-full bg-brand-light flex items-center justify-center mx-auto mb-6">
-                        <i data-lucide="help-circle" class="h-8 w-8 text-brand-accent"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 text-brand-dark">何をどう発信すれば<br>正解なのかわからない</h3>
-                    <p class="text-brand-muted text-sm leading-relaxed">
-                        他店との差別化ができず、アルゴリズムも理解できていない。MEOの上げ方もわからない。
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Concept Section -->
-    <section id="concept" class="py-24 bg-white relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col lg:flex-row items-center gap-16">
-                <div class="lg:w-1/2 relative fade-up">
-                    <div class="aspect-[4/5] relative overflow-hidden">
-                        <img src="img/画像縦.png" alt="Chef plating food" class="object-cover w-full h-full" />
-                    </div>
-                    <!-- Decorative element -->
-                    <div class="absolute -bottom-6 -right-6 w-48 h-48 bg-brand-light border border-brand-accent/20 -z-10"></div>
-                </div>
-                
-                <div class="lg:w-1/2 fade-up">
-                    <span class="text-brand-accent font-serif tracking-widest text-sm mb-2 block">CONCEPT</span>
-                    <h2 class="text-3xl md:text-4xl font-serif text-brand-dark mb-6 leading-tight">
-                        大田区の飲食店を盛り上げる。
-                    </h2>
-                    <p class="text-brand-text leading-loose mb-6 font-light">
-                        今の時代の飲食店集客は、SNSでの認知、Googleマップ（MEO）での検索、スムーズな予約導線などのあらゆるデジタル接点を網羅することが必要です。
-                    </p>
-                    <p class="text-brand-text leading-loose mb-8 font-light">
-                        私たちは、表層的な「映え」だけを追求するのではなく、ターゲットの心理を読み解き、Googleマップ（MEO）や予約導線とシームレスに連携。「集客・常連化の内製化」を目指すマーケティング支援を行います。
-                    </p>
-                    
-                    <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <i data-lucide="check" class="h-5 w-5 text-brand-accent mt-1 mr-3 flex-shrink-0"></i>
-                            <span class="text-brand-dark font-medium">グルメ媒体（食べログ等）依存からの脱却と利益率の向上</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i data-lucide="check" class="h-5 w-5 text-brand-accent mt-1 mr-3 flex-shrink-0"></i>
-                            <span class="text-brand-dark font-medium">SNS経由での認知拡大による、採用コスト・求人難の解消</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i data-lucide="check" class="h-5 w-5 text-brand-accent mt-1 mr-3 flex-shrink-0"></i>
-                            <span class="text-brand-dark font-medium">トレンドを逃さない、最新アルゴリズムに基づいた運用戦略</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="py-24 bg-brand-dark text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 fade-up">
-                <span class="text-brand-accent font-serif tracking-widest text-sm mb-2 block">OUR SERVICES</span>
-                <h2 class="text-3xl md:text-4xl font-serif mb-4">サービス提供価値</h2>
-                <div class="h-px w-16 bg-brand-accent mx-auto mb-4"></div>
-                <p class="text-gray-300 mb-10 text-sm md:text-base leading-relaxed">
-                    大田区エリアに特化しており、「大田区サンポット」という地域密着メディアを運営している強みをフルにご活用いただきます。
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
-                <!-- Service 1 -->
-                <div class="flex flex-col sm:flex-row gap-6 fade-up">
-                    <div class="flex-shrink-0">
-                        <div class="w-16 h-16 rounded-sm border border-brand-accent/30 flex items-center justify-center bg-white/5">
-                            <i data-lucide="target" class="h-8 w-8 text-brand-accent"></i>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-serif mb-3">1. コンセプト＆ターゲット設計</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                            「何を投稿するか」の前に「誰にどう思われたいか」を固めます。近隣住民、目的買いのディナー客、観光客など、ターゲットに合わせたアカウントの方向性と、競合にはない「貴店独自の価値」を明確にします。
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Service 2 -->
-                <div class="flex flex-col sm:flex-row gap-6 fade-up">
-                    <div class="flex-shrink-0">
-                        <div class="w-16 h-16 rounded-sm border border-brand-accent/30 flex items-center justify-center bg-white/5">
-                            <i data-lucide="camera" class="h-8 w-8 text-brand-accent"></i>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-serif mb-3">2. 「勝てる」クリエイティブ制作</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                            飲食店のSNSは視覚が9割。湯気、肉汁、ソースのシズル感を最大限に引き出す撮影技術の提供や、最新のアルゴリズムに乗るショート動画（Reels/TikTok）の企画・編集を行います。
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Service 3 -->
-                <div class="flex flex-col sm:flex-row gap-6 fade-up">
-                    <div class="flex-shrink-0">
-                        <div class="w-16 h-16 rounded-sm border border-brand-accent/30 flex items-center justify-center bg-white/5">
-                            <i data-lucide="map-pin" class="h-8 w-8 text-brand-accent"></i>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-serif mb-3">3. MEO（Googleマップ）対策</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                            Instagramで見つけたお店を、ユーザーはGoogleマップで検索します。MEO対策により、Googleマップの検索順位を上げ、さらに口コミ（星評価）獲得の仕組みを構築します。
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Service 4 -->
-                <div class="flex flex-col sm:flex-row gap-6 fade-up">
-                    <div class="flex-shrink-0">
-                        <div class="w-16 h-16 rounded-sm border border-brand-accent/30 flex items-center justify-center bg-white/5">
-                            <i data-lucide="users" class="h-8 w-8 text-brand-accent"></i>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-serif mb-3">4. アセット（資産）としての常連客作り</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                            新規集客だけでなく、LTV（顧客生涯価値）を高めます。ストーリーズを活用した双方向コミュニケーションや、LINE公式アカウントへの誘導設計により、一度来店したお客様を「ファン」へと育成します。
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Flow Section -->
-    <section id="flow" class="py-24 bg-brand-light">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-20 fade-up">
-                <span class="text-brand-accent font-serif tracking-widest text-sm mb-2 block">HOW IT WORKS</span>
-                <h2 class="text-3xl md:text-4xl font-serif text-brand-dark mb-4">導入から運用までの流れ</h2>
-                <div class="h-px w-16 bg-brand-accent mx-auto mb-6"></div>
-                <p class="text-brand-muted font-light">プロフェッショナルとして、確実な立ち上げと成果への最短距離を伴走します。</p>
-            </div>
-
-            <div class="relative">
-                <!-- Vertical Line (Desktop) -->
-                <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-px h-full bg-gray-300"></div>
-
-                <div class="space-y-12 md:space-y-0">
-                    <!-- Step 1 -->
-                    <div class="relative flex flex-col md:flex-row items-center justify-between fade-up">
-                        <div class="md:w-5/12 order-2 md:order-1 text-center md:text-right pr-0 md:pr-8 mt-6 md:mt-0">
-                            <h3 class="text-xl font-bold text-brand-dark mb-2">キックオフ・現状分析</h3>
-                            <p class="text-sm text-brand-muted leading-relaxed">現場の状況を言語化。客層、人気メニューの掘り起こし、ターゲットの再定義を行います。</p>
-                        </div>
-                        <div class="md:w-2/12 order-1 md:order-2 flex justify-center z-10">
-                            <div class="w-12 h-12 rounded-full bg-brand-dark text-white flex items-center justify-center font-serif text-xl border-4 border-brand-light shadow-md">1</div>
-                        </div>
-                        <div class="md:w-5/12 order-3 md:order-3"></div>
-                    </div>
-
-                    <!-- Step 2 -->
-                    <div class="relative flex flex-col md:flex-row items-center justify-between fade-up md:mt-16">
-                        <div class="md:w-5/12 order-3 md:order-1"></div>
-                        <div class="md:w-2/12 order-1 md:order-2 flex justify-center z-10">
-                            <div class="w-12 h-12 rounded-full bg-brand-dark text-white flex items-center justify-center font-serif text-xl border-4 border-brand-light shadow-md">2</div>
-                        </div>
-                        <div class="md:w-5/12 order-2 md:order-3 text-center md:text-left pl-0 md:pl-8 mt-6 md:mt-0">
-                            <h3 class="text-xl font-bold text-brand-dark mb-2">SNSコンセプト設計・アカウント最適化</h3>
-                            <p class="text-sm text-brand-muted leading-relaxed">SNSプロフィール改修、予約導線（リンクツリー）の整備、ハイライトの整理等を行います。</p>
-                        </div>
-                    </div>
-
-                    <!-- Step 3 -->
-                    <div class="relative flex flex-col md:flex-row items-center justify-between fade-up md:mt-16">
-                        <div class="md:w-5/12 order-2 md:order-1 text-center md:text-right pr-0 md:pr-8 mt-6 md:mt-0">
-                            <h3 class="text-xl font-bold text-brand-dark mb-2">クリエイティブ制作・投稿</h3>
-                            <p class="text-sm text-brand-muted leading-relaxed">シズル感のある写真・動画の撮影。弊社運営アカウントと併せて貴店SNSでの投稿を開始します。</p>
-                        </div>
-                        <div class="md:w-2/12 order-1 md:order-2 flex justify-center z-10">
-                            <div class="w-12 h-12 rounded-full bg-brand-dark text-white flex items-center justify-center font-serif text-xl border-4 border-brand-light shadow-md">3</div>
-                        </div>
-                        <div class="md:w-5/12 order-3 md:order-3"></div>
-                    </div>
-
-                    <!-- Step 4 -->
-                    <div class="relative flex flex-col md:flex-row items-center justify-between fade-up md:mt-16">
-                        <div class="md:w-5/12 order-3 md:order-1"></div>
-                        <div class="md:w-2/12 order-1 md:order-2 flex justify-center z-10">
-                            <div class="w-12 h-12 rounded-full bg-brand-dark text-white flex items-center justify-center font-serif text-xl border-4 border-brand-light shadow-md">4</div>
-                        </div>
-                        <div class="md:w-5/12 order-2 md:order-3 text-center md:text-left pl-0 md:pl-8 mt-6 md:mt-0">
-                            <h3 class="text-xl font-bold text-brand-dark mb-2">UGC（口コミ）発生の仕掛け作り</h3>
-                            <p class="text-sm text-brand-muted leading-relaxed">お客様が思わず写真を撮りたくなる店内導線の改善、卓上POPの設置。メンションへの反応ルール化。</p>
-                        </div>
-                    </div>
-
-                    <!-- Step 5 -->
-                    <div class="relative flex flex-col md:flex-row items-center justify-between fade-up md:mt-16">
-                        <div class="md:w-5/12 order-2 md:order-1 text-center md:text-right pr-0 md:pr-8 mt-6 md:mt-0">
-                            <h3 class="text-xl font-bold text-brand-dark mb-2">効果確認とブラッシュアップ</h3>
-                            <p class="text-sm text-brand-muted leading-relaxed">リピーター創出・ブランディング向上のための企画立案〜実行のPDCAを回します。</p>
-                        </div>
-                        <div class="md:w-2/12 order-1 md:order-2 flex justify-center z-10">
-                            <div class="w-12 h-12 rounded-full bg-brand-accent text-white flex items-center justify-center font-serif text-xl border-4 border-brand-light shadow-md">
-                                <i data-lucide="check" class="h-6 w-6"></i>
-                            </div>
-                        </div>
-                        <div class="md:w-5/12 order-3 md:order-3"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Case Study Section -->
-    <section id="cases" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 fade-up">
-                <span class="text-brand-accent font-serif tracking-widest text-sm mb-2 block">CASE STUDY</span>
-                <h2 class="text-3xl md:text-4xl font-serif text-brand-dark mb-4">支援実績・事例</h2>
-                <div class="h-px w-16 bg-brand-accent mx-auto mb-6"></div>
-                <p class="text-brand-muted font-light">
-                    単なるSNS運用にとどまらず、店舗に合わせた具体的な施策をご提案し、確かな集客・売上アップに貢献しています。
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Case 1 -->
-                <div class="bg-brand-light border border-gray-100 p-8 shadow-sm fade-up">
-                    <div class="flex items-start gap-4 mb-5">
-                        <div class="w-12 h-12 rounded-full bg-brand-dark text-brand-accent flex items-center justify-center flex-shrink-0 mt-1">
-                            <i data-lucide="utensils" class="h-6 w-6"></i>
-                        </div>
-                        <div>
-                            <span class="text-xs font-bold text-brand-muted block mb-1">イタリアンバル / 居酒屋</span>
-                            <h3 class="text-xl font-bold text-brand-dark leading-snug">「週末限定メニュー」の考案で<br>週末の来客数が約1.5倍に増加</h3>
-                        </div>
-                    </div>
-                    <div class="bg-white p-5 rounded-sm border border-gray-100">
-                        <span class="text-xs font-bold text-brand-accent mb-2 block">【施策内容】</span>
-                        <p class="text-sm text-brand-text mb-4 leading-relaxed">
-                            週末の集客に課題を抱えていた店舗様に対し、特別感のある「週末限定メニュー」を提案・共同開発。そのメニューの魅力を最大限に引き出すシズル感のある写真とショート動画を制作し、事前告知を含めてInstagramで集中的に発信しました。
-                        </p>
-                        <span class="text-xs font-bold text-brand-accent mb-2 block">【結果】</span>
-                        <p class="text-sm text-brand-text font-medium leading-relaxed">
-                            「限定メニューを目当てに来店した」という新規顧客が増加し、週末全体での来客数が約1.5倍に。さらに来店客によるSNSへの口コミ投稿（UGC）も自然発生するサイクルが生まれました。
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Case 2 -->
-                <div class="bg-brand-light border border-gray-100 p-8 shadow-sm fade-up transition-delay-100">
-                    <div class="flex items-start gap-4 mb-5">
-                        <div class="w-12 h-12 rounded-full bg-brand-dark text-brand-accent flex items-center justify-center flex-shrink-0 mt-1">
-                            <i data-lucide="camera" class="h-6 w-6"></i>
-                        </div>
-                        <div>
-                            <span class="text-xs font-bold text-brand-muted block mb-1">大衆居酒屋 / バル</span>
-                            <h3 class="text-xl font-bold text-brand-dark leading-snug">「写真映え」する新メニュー開発<br>20〜30代の新規予約が急増</h3>
-                        </div>
-                    </div>
-                    <div class="bg-white p-5 rounded-sm border border-gray-100">
-                        <span class="text-xs font-bold text-brand-accent mb-2 block">【施策内容】</span>
-                        <p class="text-sm text-brand-text mb-4 leading-relaxed">
-                            客層が固定化しており、若年層の新規獲得が課題でした。そこで、既存の食材を活用しつつインパクトのある「写真映え」する新メニューを考案し、Reels動画を活用してアピールを行いました。
-                        </p>
-                        <span class="text-xs font-bold text-brand-accent mb-2 block">【結果】</span>
-                        <p class="text-sm text-brand-text font-medium leading-relaxed">
-                            若年層をターゲットにした動画のリーチ数が跳ね上がり、短期間でフォロワーが急増。これまで少なかった20代〜30代の若年層からの予約殺到に繋がり、平日ディナー帯も満席になる日が増えました。
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section id="pricing" class="py-24 bg-brand-light">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 fade-up">
-                <span class="text-brand-accent font-serif tracking-widest text-sm mb-2 block">PLANS</span>
-                <h2 class="text-3xl md:text-4xl font-serif text-brand-dark mb-4">料金プラン</h2>
-                <div class="h-px w-16 bg-brand-accent mx-auto mb-6"></div>
-                <p class="text-brand-muted font-light">お店の状況やリソースに合わせた3つのプランをご用意しています。</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Plan 1 -->
-                <div class="border border-gray-200 p-8 hover:shadow-xl transition-shadow duration-300 flex flex-col fade-up bg-white">
-                    <h3 class="text-xl font-bold text-brand-dark mb-2 text-center">伴走アドバイザー</h3>
-                    <p class="text-sm text-brand-muted text-center mb-6 h-10">自社で投稿スタッフがいる店舗様向け</p>
-                    <div class="text-center mb-8">
-                        <span class="text-3xl font-bold text-brand-dark">¥50,000</span><span class="text-sm text-gray-500"> / 月</span>
-                    </div>
-                    <ul class="space-y-4 mb-8 flex-grow">
-                        <li class="flex items-start text-sm"><i data-lucide="check" class="h-4 w-4 text-brand-accent mr-2 mt-0.5"></i>月1回のオンライン定例ミーティング</li>
-                        <li class="flex items-start text-sm"><i data-lucide="check" class="h-4 w-4 text-brand-accent mr-2 mt-0.5"></i>チャットでの随時相談（無制限）</li>
-                        <li class="flex items-start text-sm"><i data-lucide="check" class="h-4 w-4 text-brand-accent mr-2 mt-0.5"></i>投稿内容・ハッシュタグの添削</li>
-                        <li class="flex items-start text-sm"><i data-lucide="check" class="h-4 w-4 text-brand-accent mr-2 mt-0.5"></i>最新トレンド情報の共有</li>
-                    </ul>
-                    <a href="#contact" class="block w-full py-3 text-center border border-brand-dark text-brand-dark hover:bg-brand-dark hover:text-white transition-colors text-sm tracking-widest">相談する</a>
-                </div>
-
-                <!-- Plan 2 (Popular) -->
-                <div class="border-2 border-brand-accent p-8 relative flex flex-col fade-up transform md:-translate-y-4 bg-white shadow-lg">
-                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-brand-accent text-white px-4 py-1 text-xs tracking-widest font-bold">
-                        RECOMMENDED
-                    </div>
-                    <h3 class="text-xl font-bold text-brand-dark mb-2 text-center">スタンダード運用</h3>
-                    <p class="text-sm text-brand-muted text-center mb-6 h-10">忙しくて運用する時間がない店舗様向け</p>
-                    <div class="text-center mb-8">
-                        <span class="text-3xl font-bold text-brand-dark">¥100,000</span><span class="text-sm text-gray-500"> / 月</span>
-                    </div>
-                    <ul class="space-y-4 mb-8 flex-grow">
-                        <li class="flex items-start text-sm"><i data-lucide="check" class="h-4 w-4 text-brand-accent mr-2 mt-0.5"></i>戦略策定・アカウント設計</li>
-                        <li class="flex items-start text-sm"><i data-lucide="check" class="h-4 w-4 text-brand-accent mr-2 mt-0.5"></i>フィード/リール投稿代行（月10回目安）</li>
-                        <li class="flex items-start text-sm"><i data-lucide="check" class="h-4 w-4 text-brand-accent mr-2 mt-0.5"></i>キャプション・ハッシュタグ作成</li>
-                        <li class="flex items-start text-sm"><i data-lucide="check" class="h-4 w-4 text-brand-accent mr-2 mt-0.5"></i>月次レポート提出＆改善提案</li>
-                        <li class="flex items-start text-sm"><i data-lucide="check" class="h-4 w-4 text-brand-accent mr-2 mt-0.5"></i>MEO（Googleマップ）対策</li>
-                    </ul>
-                    <a href="#contact" class="block w-full py-3 text-center bg-brand-dark text-white hover:bg-black transition-colors text-sm tracking-widest">相談する</a>
-                </div>
-
-                <!-- Plan 3 -->
-                <div class="border border-gray-200 p-8 hover:shadow-xl transition-shadow duration-300 flex flex-col fade-up bg-white">
-                    <h3 class="text-xl font-bold text-brand-dark mb-2 text-center">フルコミット集客</h3>
-                    <p class="text-sm text-brand-muted text-center mb-6 h-10">最速でエリアNo.1を目指す店舗様向け</p>
-                    <div class="text-center mb-8">
-                        <span class="text-3xl font-bold text-brand-dark">¥150,000〜</span><span class="text-sm text-gray-500"> / 月</span>
-                    </div>
-                    <ul class="space-y-4 mb-8 flex-grow">
-                        <li class="flex items-start text-sm"><i data-lucide="check" class="h-4 w-4 text-brand-accent mr-2 mt-0.5"></i>スタンダード運用の全内容</li>
-                        <li class="flex items-start text-sm"><i data-lucide="check" class="h-4 w-4 text-brand-accent mr-2 mt-0.5"></i>現地撮影（月1回）</li>
-                        <li class="flex items-start text-sm"><i data-lucide="check" class="h-4 w-4 text-brand-accent mr-2 mt-0.5"></i>SNS（Instagram）運用代行</li>
-                        <li class="flex items-start text-sm"><i data-lucide="check" class="h-4 w-4 text-brand-accent mr-2 mt-0.5"></i>インフルエンサーキャスティング手配</li>
-                        <li class="flex items-start text-sm"><i data-lucide="check" class="h-4 w-4 text-brand-accent mr-2 mt-0.5"></i>LINE構築・運用サポート</li>
-                    </ul>
-                    <a href="#contact" class="block w-full py-3 text-center border border-brand-dark text-brand-dark hover:bg-brand-dark hover:text-white transition-colors text-sm tracking-widest">相談する</a>
-                </div>
-            </div>
-            <p class="text-center text-xs text-gray-400 mt-6">※料金は全て税抜き価格です。※最低契約期間は原則6ヶ月〜となります。</p>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section id="contact" class="py-24 relative overflow-hidden bg-brand-dark">
-        <!-- Background decorative elements -->
-        <div class="absolute top-0 right-0 -mt-20 -mr-20 w-80 h-80 rounded-full bg-brand-accent/5 blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-80 h-80 rounded-full bg-brand-accent/5 blur-3xl"></div>
-
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center fade-up">
-            <h2 class="text-3xl md:text-4xl font-serif text-white mb-6">まずは現状のアカウントを<br class="md:hidden">無料で診断しませんか？</h2>
-            <p class="text-gray-300 mb-10 text-sm md:text-base leading-relaxed">
-                「ウチのお店でも効果は出る？」「現状のアカウントの何がダメなの？」<br>
-                些細な疑問でも構いません。プロの視点から、改善の余地と可能性をお伝えします。
-            </p>
-            
-            <form class="bg-white/5 p-8 border border-white/10 text-left max-w-2xl mx-auto rounded-sm backdrop-blur-sm">
-                <div class="space-y-6">
-                    <div>
-                        <label for="shop-name" class="block text-sm font-medium text-gray-300 mb-1">店舗名 <span class="text-brand-accent text-xs">必須</span></label>
-                        <input type="text" id="shop-name" class="w-full bg-white/10 border border-white/20 text-white px-4 py-3 focus:outline-none focus:border-brand-accent transition-colors" placeholder="例：イタリアンバル Gastronomy">
-                    </div>
-                    <div>
-                        <label for="url" class="block text-sm font-medium text-gray-300 mb-1">現在のInstagramアカウントURL または ID</label>
-                        <input type="text" id="url" class="w-full bg-white/10 border border-white/20 text-white px-4 py-3 focus:outline-none focus:border-brand-accent transition-colors" placeholder="例：@your_shop_id">
-                    </div>
-                    <div>
-                        <label for="email" class="block text-sm font-medium text-gray-300 mb-1">メールアドレス <span class="text-brand-accent text-xs">必須</span></label>
-                        <input type="email" id="email" class="w-full bg-white/10 border border-white/20 text-white px-4 py-3 focus:outline-none focus:border-brand-accent transition-colors" placeholder="example@email.com">
-                    </div>
-                    <div>
-                        <label for="message" class="block text-sm font-medium text-gray-300 mb-1">お悩み・ご相談内容</label>
-                        <textarea id="message" rows="4" class="w-full bg-white/10 border border-white/20 text-white px-4 py-3 focus:outline-none focus:border-brand-accent transition-colors" placeholder="集客に悩んでいる、撮影の仕方がわからない等、お気軽にご記入ください。"></textarea>
-                    </div>
-                    <button type="button" class="w-full bg-brand-accent text-white font-bold py-4 hover:bg-yellow-700 transition-colors tracking-widest text-lg">
-                        無料診断を申し込む
-                    </button>
-                </div>
-            </form>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section id="faq" class="py-24 bg-brand-light">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12 fade-up">
-                <span class="text-brand-accent font-serif tracking-widest text-sm mb-2 block">FAQ</span>
-                <h2 class="text-3xl md:text-4xl font-serif text-brand-dark mb-4">よくある質問</h2>
-                <div class="h-px w-16 bg-brand-accent mx-auto mb-4"></div>
-                <p class="text-brand-muted text-sm md:text-base font-light">
-                    サービス内容やご契約前によくいただくご質問をまとめました。
-                </p>
-            </div>
-
-            <div class="space-y-4">
-                <div class="bg-white border border-gray-200 p-6 fade-up">
-                    <h3 class="text-sm font-semibold text-brand-dark flex items-start">
-                        <span class="mr-2 text-brand-accent">Q.</span>
-                        <span>どのくらいの期間で効果が出ますか？</span>
-                    </h3>
-                    <p class="mt-3 text-sm text-brand-muted leading-relaxed">
-                        業態や現在の状況等にもよりますが、目安として3〜6ヶ月程度でフォロワー数や来店数の変化をご実感いただくケースが多いです。短期的な「バズ」ではなく、中長期での安定した集客基盤づくりを重視しています。
-                    </p>
-                </div>
-
-                <div class="bg-white border border-gray-200 p-6 fade-up">
-                    <h3 class="text-sm font-semibold text-brand-dark flex items-start">
-                        <span class="mr-2 text-brand-accent">Q.</span>
-                        <span>SNSの知識がなくても大丈夫でしょうか？</span>
-                    </h3>
-                    <p class="mt-3 text-sm text-brand-muted leading-relaxed">
-                        はい、問題ございません。難しい専門用語はできるだけ使わず、現場のスタッフの方にも伝わりやすい形でご説明します。運用を内製化したい場合も、投稿のポイントや撮影のコツなどを丁寧にお伝えします。
-                    </p>
-                </div>
-
-                <div class="bg-white border border-gray-200 p-6 fade-up">
-                    <h3 class="text-sm font-semibold text-brand-dark flex items-start">
-                        <span class="mr-2 text-brand-accent">Q.</span>
-                        <span>大田区以外の店舗でも依頼できますか？</span>
-                    </h3>
-                    <p class="mt-3 text-sm text-brand-muted leading-relaxed">
-                        大田区の飲食店様を中心にサポートしておりますが、オンラインでのご支援が可能な場合は、近隣エリアや都内他区の店舗様もご相談いただけます。まずは無料相談フォームより現状をお聞かせください。
-                    </p>
-                </div>
-
-                <div class="bg-white border border-gray-200 p-6 fade-up">
-                    <h3 class="text-sm font-semibold text-brand-dark flex items-start">
-                        <span class="mr-2 text-brand-accent">Q.</span>
-                        <span>最低契約期間はありますか？</span>
-                    </h3>
-                    <p class="mt-3 text-sm text-brand-muted leading-relaxed">
-                        原則として6ヶ月〜のご契約をお願いしております。短期間の施策で終わらせるのではなく、データ検証と改善を繰り返しながら、持続的な集客につながる仕組みづくりを行うためです。
-                    </p>
-                </div>
-
-                <div class="bg-white border border-gray-200 p-6 fade-up">
-                    <h3 class="text-sm font-semibold text-brand-dark flex items-start">
-                        <span class="mr-2 text-brand-accent">Q.</span>
-                        <span>チェーン店でも利用可能ですか？</span>
-                    </h3>
-                    <p class="mt-3 text-sm text-brand-muted leading-relaxed">
-                        もちろん可能です。チェーン店ならではの強みを含めて訴求と来客に繋げる支援をさせていただきます。
-                    </p>
-                </div>
-            </div>
-
-            <div class="mt-10 text-center fade-up">
-                <p class="text-xs md:text-sm text-brand-muted mb-4">
-                    上記以外のご不明点があれば、お気軽にお問い合わせください。
-                </p>
-                <a href="#contact" class="inline-flex items-center justify-center px-8 py-3 border border-brand-dark text-brand-dark text-xs md:text-sm tracking-widest hover:bg-brand-dark hover:text-white transition-colors">
-                    無料相談フォームへ戻る
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-[#111111] py-12 border-t border-white/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
-            <div class="mb-6 md:mb-0">
-                <span class="font-serif text-2xl text-white tracking-wider">GURUMA<span class="text-brand-accent">.</span></span>
-                <p class="text-gray-500 text-sm mt-2">飲食店特化型マーケティング支援</p>
-            </div>
-            <div class="flex space-x-6">
-                <a href="https://www.instagram.com/rino._ohtaku/" class="text-gray-500 hover:text-white transition-colors" target="_blank"><i class="h-5 w-5 fa-brands fa-instagram"></i></a>
-                <a href="https://www.tiktok.com/@rino_ohtaku" class="text-gray-500 hover:text-white transition-colors" target="_blank"><i class="h-5 w-5 fa-brands fa-tiktok"></i></a>
-                <a href="https://www.youtube.com/@otakusanpot2503" class="text-gray-500 hover:text-white transition-colors" target="_blank"><i class="h-5 w-5 fa-brands fa-youtube"></i></a>
-                <a href="https://line.me/R/ti/p/@732pcdtl?oat_content=url&ts=11221245" class="text-gray-500 hover:text-white transition-colors" target="_blank"><i class="h-5 w-5 fa-brands fa-line"></i></a>
-                <a href="https://ota-sanpot.com/" class="text-gray-500 hover:text-white transition-colors" target="_blank"><i class="h-5 w-5 fa-solid fa-globe"></i></a>
-            </div>
-        </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 text-center md:text-left flex flex-col md:flex-row justify-between items-center">
-            <p class="text-gray-600 text-xs">&copy; 2026 大田区サンポット. All rights reserved.</p>
-            <div class="flex space-x-4 mt-4 md:mt-0 text-xs text-gray-600">
-                <a href="#" class="hover:text-gray-400">プライバシーポリシー</a>
-                <a href="#" class="hover:text-gray-400">特定商取引法に基づく表記</a>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
-
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('bg-brand-dark/95', 'backdrop-blur-sm', 'border-b', 'border-white/10', 'py-0');
-                navbar.classList.remove('bg-transparent', 'border-transparent', 'py-2');
-            } else {
-                navbar.classList.add('bg-transparent', 'border-transparent', 'py-2');
-                navbar.classList.remove('bg-brand-dark/95', 'backdrop-blur-sm', 'border-b', 'border-white/10', 'py-0');
-            }
-        });
-
-        // Mobile menu toggle
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
-
-        // Close mobile menu on link click
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.add('hidden');
-            });
-        });
-
-        // Scroll Animation (Intersection Observer)
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target); // 一度発火したら監視を解除
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-up').forEach((elem) => {
-            observer.observe(elem);
-        });
-    </script>
 </body>
 </html>
