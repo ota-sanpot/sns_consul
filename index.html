@@ -324,6 +324,34 @@
       color: rgba(255,255,255,0.5);
       letter-spacing: 1px;
     }
+
+    /* マーキー */
+    .marquee-wrap {
+      background: var(--grad-main);
+      padding: 18px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .marquee-track {
+      display: inline-flex;
+      animation: marquee 18s linear infinite;
+    }
+    .marquee-text {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+      padding: 0 32px;
+    }
+    .marquee-sep {
+      color: rgba(255,255,255,0.4);
+      padding: 0 8px;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
   </style>
 </head>
 <body class="antialiased">
@@ -418,6 +446,28 @@
     </div>
   </div>
 </section>
+
+<!-- Marquee -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-text">SNS運用代行</span><span class="marquee-sep">✦</span>
+    <span class="marquee-text">MEO対策</span><span class="marquee-sep">✦</span>
+    <span class="marquee-text">クリエイティブ制作</span><span class="marquee-sep">✦</span>
+    <span class="marquee-text">Instagram Reels</span><span class="marquee-sep">✦</span>
+    <span class="marquee-text">大田区特化</span><span class="marquee-sep">✦</span>
+    <span class="marquee-text">Googleマップ最適化</span><span class="marquee-sep">✦</span>
+    <span class="marquee-text">常連客育成</span><span class="marquee-sep">✦</span>
+    <span class="marquee-text">LINE構築</span><span class="marquee-sep">✦</span>
+    <span class="marquee-text">SNS運用代行</span><span class="marquee-sep">✦</span>
+    <span class="marquee-text">MEO対策</span><span class="marquee-sep">✦</span>
+    <span class="marquee-text">クリエイティブ制作</span><span class="marquee-sep">✦</span>
+    <span class="marquee-text">Instagram Reels</span><span class="marquee-sep">✦</span>
+    <span class="marquee-text">大田区特化</span><span class="marquee-sep">✦</span>
+    <span class="marquee-text">Googleマップ最適化</span><span class="marquee-sep">✦</span>
+    <span class="marquee-text">常連客育成</span><span class="marquee-sep">✦</span>
+    <span class="marquee-text">LINE構築</span><span class="marquee-sep">✦</span>
+  </div>
+</div>
 
 </body>
 </html>
