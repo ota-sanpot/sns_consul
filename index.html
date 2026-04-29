@@ -419,6 +419,65 @@
       line-height: 1.8;
       margin: 0;
     }
+
+    /* サービスカード */
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .service-card {
+      background: #ffffff;
+      border: 1px solid #f0f0f0;
+      border-radius: 16px;
+      padding: 32px 28px;
+      position: relative;
+      overflow: hidden;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--grad-main);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .3s ease;
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(99,102,241,0.1);
+    }
+    .service-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--indigo);
+      margin-bottom: 12px;
+    }
+    .service-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin: 0 0 12px;
+      letter-spacing: -0.5px;
+    }
+    .service-body {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-sub);
+      line-height: 1.8;
+      margin: 0;
+    }
+    .service-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(236,72,153,0.12));
+    }
   </style>
 </head>
 <body class="antialiased">
@@ -566,6 +625,92 @@
         </div>
         <h3 class="pain-title">何をどう発信すれば<br>正解なのかわからない</h3>
         <p class="pain-body">他店との差別化ができず、アルゴリズムも理解できていない。MEOの上げ方もわからない。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Concept Section -->
+<div id="concept" class="section-bg-white section-wrap">
+  <div class="section">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;" class="reveal">
+      <div>
+        <div style="aspect-ratio:4/5;border-radius:16px;overflow:hidden;position:relative;">
+          <img src="img/画像縦.png" alt="コンセプト" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+      </div>
+      <div>
+        <span class="section-label" style="color:var(--indigo);">CONCEPT</span>
+        <h2 class="section-heading">大田区の飲食店を<br>盛り上げる。</h2>
+        <p class="section-sub" style="margin-bottom:24px;">
+          今の時代の飲食店集客は、SNSでの認知、Googleマップ（MEO）での検索、スムーズな予約導線など、あらゆるデジタル接点を網羅することが必要です。
+        </p>
+        <p style="font-size:14px;font-weight:300;color:var(--text-sub);line-height:1.9;max-width:480px;margin:0 0 28px;">
+          私たちは、表層的な「映え」だけを追求するのではなく、ターゲットの心理を読み解き、MEOや予約導線とシームレスに連携。「集客・常連化の内製化」を目指すマーケティング支援を行います。
+        </p>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px;">
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:13px;font-weight:400;color:var(--text-main);">
+            <i data-lucide="check" style="width:16px;height:16px;color:var(--indigo);flex-shrink:0;margin-top:2px;"></i>
+            グルメ媒体（食べログ等）依存からの脱却と利益率の向上
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:13px;font-weight:400;color:var(--text-main);">
+            <i data-lucide="check" style="width:16px;height:16px;color:var(--indigo);flex-shrink:0;margin-top:2px;"></i>
+            SNS経由での認知拡大による、採用コスト・求人難の解消
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:13px;font-weight:400;color:var(--text-main);">
+            <i data-lucide="check" style="width:16px;height:16px;color:var(--indigo);flex-shrink:0;margin-top:2px;"></i>
+            トレンドを逃さない、最新アルゴリズムに基づいた運用戦略
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Services Section -->
+<div id="services" class="section-bg-light section-wrap">
+  <div class="section reveal">
+    <span class="section-label" style="color:var(--indigo);">OUR SERVICES</span>
+    <h2 class="section-heading">サービス提供価値</h2>
+    <p class="section-sub">
+      大田区エリアに特化しており、「大田区サンポット」という地域密着メディアを運営している強みをフルにご活用いただきます。
+    </p>
+
+    <div class="service-grid">
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon">
+          <i data-lucide="target" style="width:22px;height:22px;color:var(--indigo);"></i>
+        </div>
+        <div class="service-num">01</div>
+        <h3 class="service-title">コンセプト＆ターゲット設計</h3>
+        <p class="service-body">「何を投稿するか」の前に「誰にどう思われたいか」を固めます。近隣住民、目的買いのディナー客、観光客など、ターゲットに合わせたアカウントの方向性と、競合にはない「貴店独自の価値」を明確にします。</p>
+      </div>
+
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon">
+          <i data-lucide="camera" style="width:22px;height:22px;color:var(--purple);"></i>
+        </div>
+        <div class="service-num">02</div>
+        <h3 class="service-title">「勝てる」クリエイティブ制作</h3>
+        <p class="service-body">飲食店のSNSは視覚が9割。シズル感を最大限に引き出す撮影技術の提供や、最新アルゴリズムに乗るショート動画（Reels/TikTok）の企画・編集を行います。</p>
+      </div>
+
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon">
+          <i data-lucide="map-pin" style="width:22px;height:22px;color:var(--pink);"></i>
+        </div>
+        <div class="service-num">03</div>
+        <h3 class="service-title">MEO（Googleマップ）対策</h3>
+        <p class="service-body">Instagramで見つけたお店を、ユーザーはGoogleマップで検索します。MEO対策によりGoogleマップの検索順位を上げ、口コミ（星評価）獲得の仕組みを構築します。</p>
+      </div>
+
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon">
+          <i data-lucide="users" style="width:22px;height:22px;color:var(--indigo);"></i>
+        </div>
+        <div class="service-num">04</div>
+        <h3 class="service-title">アセットとしての常連客作り</h3>
+        <p class="service-body">新規集客だけでなく、LTV（顧客生涯価値）を高めます。ストーリーズを活用した双方向コミュニケーションや、LINE公式アカウントへの誘導設計により、来店客を「ファン」へと育成します。</p>
       </div>
     </div>
   </div>
