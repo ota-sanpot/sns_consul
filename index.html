@@ -352,6 +352,73 @@
       from { transform: translateX(0); }
       to   { transform: translateX(-50%); }
     }
+
+    /* 共通セクション */
+    .section {
+      padding: 96px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-bg-light  { background: var(--light-bg); }
+    .section-bg-white  { background: #ffffff; }
+    .section-bg-dark   { background: var(--dark-bg); }
+    .section-wrap      { padding: 96px 0; }
+
+    .section-heading {
+      font-size: clamp(26px, 4vw, 40px);
+      font-weight: 900;
+      letter-spacing: -1px;
+      line-height: 1.2;
+      margin: 0 0 16px;
+      color: var(--text-main);
+    }
+    .section-sub {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-sub);
+      line-height: 1.8;
+      max-width: 480px;
+      margin: 0 0 48px;
+    }
+
+    /* 問題カード */
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .pain-card {
+      background: #ffffff;
+      border: 1px solid #f0f0f0;
+      border-radius: 16px;
+      padding: 36px 28px;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .pain-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(99,102,241,0.1);
+    }
+    .pain-icon {
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(236,72,153,0.1));
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+    }
+    .pain-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.45;
+      margin: 0 0 12px;
+    }
+    .pain-body {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-sub);
+      line-height: 1.8;
+      margin: 0;
+    }
   </style>
 </head>
 <body class="antialiased">
@@ -466,6 +533,41 @@
     <span class="marquee-text">Googleマップ最適化</span><span class="marquee-sep">✦</span>
     <span class="marquee-text">常連客育成</span><span class="marquee-sep">✦</span>
     <span class="marquee-text">LINE構築</span><span class="marquee-sep">✦</span>
+  </div>
+</div>
+
+<!-- Problems Section -->
+<div class="section-bg-light section-wrap">
+  <div class="section reveal">
+    <span class="section-label" style="color:var(--indigo);">PAIN POINTS</span>
+    <h2 class="section-heading">大田区の飲食店様、<br>こんなお悩みありませんか？</h2>
+    <p class="section-sub">SNSを頑張っているのに成果が出ない。その原因は「戦略」の欠如にあります。</p>
+
+    <div class="pain-grid">
+      <div class="pain-card reveal reveal-delay-1">
+        <div class="pain-icon">
+          <i data-lucide="trending-down" style="width:24px;height:24px;color:var(--indigo);"></i>
+        </div>
+        <h3 class="pain-title">フォロワーが増えず<br>来店に繋がらない</h3>
+        <p class="pain-body">SNSを始めたが、実際の売上や予約数に変化がなく、SNS運用の効果を実感できていない。</p>
+      </div>
+
+      <div class="pain-card reveal reveal-delay-2">
+        <div class="pain-icon">
+          <i data-lucide="clock" style="width:24px;height:24px;color:var(--purple);"></i>
+        </div>
+        <h3 class="pain-title">日々の営業が忙しく<br>運用する時間がない</h3>
+        <p class="pain-body">投稿用の写真撮影や文章作成に時間がかかり、更新が滞りがち。専任スタッフを雇う余裕もない。</p>
+      </div>
+
+      <div class="pain-card reveal reveal-delay-3">
+        <div class="pain-icon">
+          <i data-lucide="help-circle" style="width:24px;height:24px;color:var(--pink);"></i>
+        </div>
+        <h3 class="pain-title">何をどう発信すれば<br>正解なのかわからない</h3>
+        <p class="pain-body">他店との差別化ができず、アルゴリズムも理解できていない。MEOの上げ方もわからない。</p>
+      </div>
+    </div>
   </div>
 </div>
 
