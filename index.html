@@ -142,9 +142,96 @@
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: var(--light-bg); }
     ::-webkit-scrollbar-thumb { background: var(--indigo); border-radius: 3px; }
+
+    /* ナビゲーション */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.8);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      transition: box-shadow .3s ease;
+    }
+    #navbar.scrolled {
+      box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+    }
+    .nav-logo {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      text-decoration: none;
+    }
+    .nav-link {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: var(--text-sub);
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+    .nav-link:hover { color: var(--indigo); }
+
+    /* モバイルメニュー */
+    #mobile-menu {
+      display: none;
+      background: rgba(255,255,255,0.97);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(0,0,0,0.06);
+      padding: 16px 0;
+    }
+    #mobile-menu.open { display: block; }
+    .mobile-nav-link {
+      display: block;
+      padding: 12px 24px;
+      font-size: 14px;
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 400;
+    }
+    .mobile-nav-link:hover { color: var(--indigo); }
   </style>
 </head>
 <body class="antialiased">
+
+<!-- Navigation -->
+<nav id="navbar">
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;height:68px;">
+      <!-- ロゴ -->
+      <a href="#" class="nav-logo grad-text" style="letter-spacing:-1px;">GURUMA</a>
+
+      <!-- PC リンク -->
+      <div style="display:flex;align-items:center;gap:32px;" class="hidden md:flex">
+        <a href="#concept"  class="nav-link">コンセプト</a>
+        <a href="#services" class="nav-link">サービス</a>
+        <a href="#flow"     class="nav-link">導入の流れ</a>
+        <a href="#cases"    class="nav-link">実績・事例</a>
+        <a href="#pricing"  class="nav-link">料金プラン</a>
+        <a href="#faq"      class="nav-link">よくある質問</a>
+        <a href="#contact"  class="btn-primary" style="font-size:12px;padding:11px 22px;">無料相談に申し込む</a>
+      </div>
+
+      <!-- ハンバーガー（モバイル） -->
+      <button id="mobile-menu-btn" class="md:hidden" style="background:none;border:none;cursor:pointer;color:var(--text-main);">
+        <i data-lucide="menu" style="width:24px;height:24px;"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- モバイルメニュー -->
+  <div id="mobile-menu">
+    <a href="#concept"  class="mobile-nav-link">コンセプト</a>
+    <a href="#services" class="mobile-nav-link">サービス</a>
+    <a href="#flow"     class="mobile-nav-link">導入の流れ</a>
+    <a href="#cases"    class="mobile-nav-link">実績・事例</a>
+    <a href="#pricing"  class="mobile-nav-link">料金プラン</a>
+    <a href="#faq"      class="mobile-nav-link">よくある質問</a>
+    <a href="#contact"  class="mobile-nav-link" style="color:var(--indigo);font-weight:700;">無料相談に申し込む →</a>
+  </div>
+</nav>
 
 </body>
 </html>
