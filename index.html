@@ -777,6 +777,52 @@
       line-height: 1.9;
       margin: 0 0 40px;
     }
+
+/* Footer */
+.footer {
+  background: var(--dark-nav);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 48px 24px 32px;
+}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.footer-logo {
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  text-decoration: none;
+}
+.footer-tagline {
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+  margin-top: 4px;
+}
+.footer-social {
+  display: flex;
+  gap: 20px;
+}
+.footer-social-link {
+  color: rgba(255,255,255,0.35);
+  font-size: 18px;
+  transition: color .2s ease;
+}
+.footer-social-link:hover { color: #ffffff; }
+.footer-copy {
+  max-width: 1200px;
+  margin: 24px auto 0;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding-top: 20px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.25);
+  text-align: center;
+}
   </style>
 </head>
 <body class="antialiased">
@@ -1230,6 +1276,34 @@
     <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:16px;">※専用の回答フォームへ移動します</p>
   </div>
 </section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <a href="#" class="footer-logo grad-text">GURUMA</a>
+      <p class="footer-tagline">飲食店特化型マーケティング支援</p>
+    </div>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/rino._ohtaku/" class="footer-social-link" target="_blank" rel="noopener">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://www.tiktok.com/@rino_ohtaku" class="footer-social-link" target="_blank" rel="noopener">
+        <i class="fa-brands fa-tiktok"></i>
+      </a>
+      <a href="https://www.youtube.com/@otakusanpot2503" class="footer-social-link" target="_blank" rel="noopener">
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+      <a href="https://line.me/R/ti/p/@732pcdtl?oat_content=url&ts=11221245" class="footer-social-link" target="_blank" rel="noopener">
+        <i class="fa-brands fa-line"></i>
+      </a>
+      <a href="https://ota-sanpot.com/" class="footer-social-link" target="_blank" rel="noopener">
+        <i class="fa-solid fa-globe"></i>
+      </a>
+    </div>
+  </div>
+  <div class="footer-copy">&copy; 2026 大田区サンポット. All rights reserved.</div>
+</footer>
 
 </body>
 </html>
