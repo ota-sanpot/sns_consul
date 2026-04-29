@@ -192,6 +192,18 @@
       font-weight: 400;
     }
     .mobile-nav-link:hover { color: var(--indigo); }
+
+    /* フォーカス表示（キーボードナビゲーション用） */
+    .nav-link:focus-visible,
+    .mobile-nav-link:focus-visible,
+    #mobile-menu-btn:focus-visible,
+    .btn-primary:focus-visible,
+    .btn-ghost:focus-visible,
+    .btn-outline:focus-visible {
+      outline: 2px solid var(--indigo);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
   </style>
 </head>
 <body class="antialiased">
@@ -204,7 +216,7 @@
       <a href="#" class="nav-logo grad-text" style="letter-spacing:-1px;">GURUMA</a>
 
       <!-- PC リンク -->
-      <div style="display:flex;align-items:center;gap:32px;" class="hidden md:flex">
+      <div style="align-items:center;gap:32px;" class="hidden md:flex">
         <a href="#concept"  class="nav-link">コンセプト</a>
         <a href="#services" class="nav-link">サービス</a>
         <a href="#flow"     class="nav-link">導入の流れ</a>
@@ -215,14 +227,18 @@
       </div>
 
       <!-- ハンバーガー（モバイル） -->
-      <button id="mobile-menu-btn" class="md:hidden" style="background:none;border:none;cursor:pointer;color:var(--text-main);">
-        <i data-lucide="menu" style="width:24px;height:24px;"></i>
+      <button id="mobile-menu-btn" class="md:hidden"
+              aria-label="メニューを開く"
+              aria-expanded="false"
+              aria-controls="mobile-menu"
+              style="background:none;border:none;cursor:pointer;color:var(--text-main);">
+        <i data-lucide="menu" style="width:24px;height:24px;" aria-hidden="true"></i>
       </button>
     </div>
   </div>
 
   <!-- モバイルメニュー -->
-  <div id="mobile-menu">
+  <nav id="mobile-menu" aria-label="モバイルナビゲーション">
     <a href="#concept"  class="mobile-nav-link">コンセプト</a>
     <a href="#services" class="mobile-nav-link">サービス</a>
     <a href="#flow"     class="mobile-nav-link">導入の流れ</a>
@@ -230,7 +246,7 @@
     <a href="#pricing"  class="mobile-nav-link">料金プラン</a>
     <a href="#faq"      class="mobile-nav-link">よくある質問</a>
     <a href="#contact"  class="mobile-nav-link" style="color:var(--indigo);font-weight:700;">無料相談に申し込む →</a>
-  </div>
+  </nav>
 </nav>
 
 </body>
