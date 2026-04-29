@@ -492,6 +492,67 @@
       transform: translateY(-6px);
       box-shadow: 0 20px 60px rgba(99,102,241,0.1);
     }
+
+    /* 横長フィーチャードカード（大田区特化） */
+    .service-card.service-wide {
+      grid-column: 1 / -1;
+      background: var(--dark-bg);
+      border: 1px solid rgba(255,255,255,0.08);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+      padding: 48px;
+      overflow: visible;
+    }
+    .service-card.service-wide::before { display: none; }
+    .service-card.service-wide:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 64px rgba(99,102,241,0.2);
+    }
+    .service-card.service-wide .service-num  { color: #a5b4fc; }
+    .service-card.service-wide .service-title {
+      color: #ffffff;
+      font-size: 20px;
+    }
+    .service-card.service-wide .service-body { color: rgba(255,255,255,0.6); }
+    .service-wide-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .service-wide-stat {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 18px 20px;
+      transition: background .2s ease;
+    }
+    .service-wide-stat:hover { background: rgba(255,255,255,0.09); }
+    .service-wide-stat-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #a5b4fc;
+      margin-bottom: 8px;
+    }
+    .service-wide-stat-body {
+      font-size: 12px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.65;
+    }
+    @media (max-width: 768px) {
+      .service-card.service-wide {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding: 32px 24px;
+      }
+    }
+    @media (max-width: 480px) {
+      .service-wide-stats { grid-template-columns: 1fr; }
+    }
     .service-num {
       font-size: 11px;
       font-weight: 700;
@@ -1254,6 +1315,36 @@ body.has-cursor button { cursor: none !important; }
         <div class="service-num">04</div>
         <h3 class="service-title">アセットとしての常連客作り</h3>
         <p class="service-body">新規集客だけでなく、LTV（顧客生涯価値）を高めます。ストーリーズを活用した双方向コミュニケーションや、LINE公式アカウントへの誘導設計により、来店客を「ファン」へと育成します。</p>
+      </div>
+
+      <!-- 横長フィーチャードカード -->
+      <div class="service-card service-wide reveal">
+        <div>
+          <div class="service-icon" style="background:linear-gradient(135deg,rgba(99,102,241,0.25),rgba(236,72,153,0.2));">
+            <i data-lucide="map-pin" style="width:22px;height:22px;color:#a5b4fc;"></i>
+          </div>
+          <div class="service-num">LOCAL ADVANTAGE</div>
+          <h3 class="service-title">大田区を「知っている」から、<br>勝てる集客ができる。</h3>
+          <p class="service-body" style="margin-bottom:0;">私たちは、大田区在住として「大田区サンポット」という地域密着メディアを自ら運営しています。地元の消費行動・競合状況・エリア特性を熟知した視点から、他社にはない地域特化型の集客戦略をご提案します。</p>
+        </div>
+        <div class="service-wide-stats">
+          <div class="service-wide-stat">
+            <div class="service-wide-stat-label">地域リーチ</div>
+            <div class="service-wide-stat-body">大田区ユーザーへ直接リーチできるメディア基盤を保有</div>
+          </div>
+          <div class="service-wide-stat">
+            <div class="service-wide-stat-label">連携実績</div>
+            <div class="service-wide-stat-body">地元飲食店との信頼関係と紹介ネットワークを活用</div>
+          </div>
+          <div class="service-wide-stat">
+            <div class="service-wide-stat-label">エリア熟知</div>
+            <div class="service-wide-stat-body">競合店・商圏・ターゲット層の行動パターンを把握済み</div>
+          </div>
+          <div class="service-wide-stat">
+            <div class="service-wide-stat-label">相乗効果</div>
+            <div class="service-wide-stat-body">メディア掲載 × SNS運用で認知と来店を同時に加速</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
