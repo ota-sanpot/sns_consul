@@ -1305,5 +1305,44 @@
   <div class="footer-copy">&copy; 2026 大田区サンポット. All rights reserved.</div>
 </footer>
 
+<script>
+  // Lucide アイコン初期化
+  lucide.createIcons();
+
+  // モバイルメニュー開閉
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu    = document.getElementById('mobile-menu');
+  mobileMenuBtn.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    mobileMenuBtn.setAttribute('aria-expanded', String(isOpen));
+  });
+  document.querySelectorAll('#mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // ナビゲーション スクロール時に影を付ける
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  // スクロールフェードイン（IntersectionObserver）
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+  );
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
 </body>
 </html>
