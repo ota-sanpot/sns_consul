@@ -728,6 +728,55 @@
       margin: 0;
       padding-left: 22px;
     }
+
+    /* CTA */
+    .cta-section {
+      position: relative;
+      background: var(--dark-bg);
+      overflow: hidden;
+      padding: 96px 24px;
+      text-align: center;
+    }
+    .cta-blob-1 {
+      position: absolute;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: rgba(99,102,241,0.3);
+      filter: blur(80px);
+      top: -200px; right: -100px;
+      animation: blobFloat 8s ease-in-out infinite;
+    }
+    .cta-blob-2 {
+      position: absolute;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: rgba(236,72,153,0.2);
+      filter: blur(80px);
+      bottom: -150px; left: -80px;
+      animation: blobFloat 8s ease-in-out infinite;
+      animation-delay: -4s;
+    }
+    .cta-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .cta-heading {
+      font-size: clamp(28px, 5vw, 52px);
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: -2px;
+      line-height: 1.15;
+      margin: 0 0 20px;
+    }
+    .cta-sub {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.9;
+      margin: 0 0 40px;
+    }
   </style>
 </head>
 <body class="antialiased">
@@ -1163,6 +1212,24 @@
     </div>
   </div>
 </div>
+
+<!-- CTA Section -->
+<section id="contact" class="cta-section">
+  <div class="cta-blob-1"></div>
+  <div class="cta-blob-2"></div>
+  <div class="cta-inner reveal">
+    <h2 class="cta-heading">まずは現状を<br><span class="grad-text-light">無料で診断しませんか？</span></h2>
+    <p class="cta-sub">
+      「ウチのお店でも効果は出る？」「現状の何がダメなの？」<br>
+      些細な疑問でも構いません。プロの視点から、改善の余地と可能性をお伝えします。
+    </p>
+    <a href="https://forms.gle/4CSXeg88fuyGUPR69" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:15px;padding:18px 44px;">
+      <i class="fa-regular fa-pen-to-square" style="margin-right:10px;"></i>
+      無料診断に申し込む
+    </a>
+    <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:16px;">※専用の回答フォームへ移動します</p>
+  </div>
+</section>
 
 </body>
 </html>
