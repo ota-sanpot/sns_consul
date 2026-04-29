@@ -688,6 +688,46 @@
       color: var(--indigo);
     }
     .pricing-card.featured .pricing-check { color: #a5b4fc; }
+
+    /* FAQ */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 720px;
+    }
+    .faq-item {
+      background: #ffffff;
+      border: 1px solid #f0f0f0;
+      border-radius: 12px;
+      padding: 24px 28px;
+      transition: box-shadow .2s ease;
+    }
+    .faq-item:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+    .faq-q {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 0 0 10px;
+    }
+    .faq-q-mark {
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--indigo);
+      flex-shrink: 0;
+      padding-top: 1px;
+    }
+    .faq-a {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-sub);
+      line-height: 1.8;
+      margin: 0;
+      padding-left: 22px;
+    }
   </style>
 </head>
 <body class="antialiased">
@@ -1080,6 +1120,47 @@
     <p style="text-align:center;font-size:12px;color:var(--text-sub);margin-top:24px;">
       ※料金は全て税抜き価格です。※最低契約期間は原則6ヶ月〜となります。
     </p>
+  </div>
+</div>
+
+<!-- FAQ Section -->
+<div id="faq" class="section-bg-light section-wrap">
+  <div class="section reveal">
+    <span class="section-label" style="color:var(--indigo);">FAQ</span>
+    <h2 class="section-heading">よくある質問</h2>
+    <p class="section-sub">よくいただくご質問をまとめました。</p>
+
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <div class="faq-q"><span class="faq-q-mark">Q.</span><span>どのくらいの期間で効果が出ますか？</span></div>
+        <p class="faq-a">業態や現在の状況等にもよりますが、目安として3〜6ヶ月程度でフォロワー数や来店数の変化をご実感いただくケースが多いです。短期的な「バズ」ではなく、中長期での安定した集客基盤づくりを重視しています。</p>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q"><span class="faq-q-mark">Q.</span><span>SNSの知識がなくても大丈夫でしょうか？</span></div>
+        <p class="faq-a">はい、問題ございません。難しい専門用語はできるだけ使わず、現場のスタッフの方にも伝わりやすい形でご説明します。運用を内製化したい場合も、投稿のポイントや撮影のコツなどを丁寧にお伝えします。</p>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q"><span class="faq-q-mark">Q.</span><span>大田区以外の店舗でも依頼できますか？</span></div>
+        <p class="faq-a">大田区の飲食店様を中心にサポートしておりますが、オンラインでのご支援が可能な場合は、近隣エリアや都内他区の店舗様もご相談いただけます。まずは無料相談フォームより現状をお聞かせください。</p>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q"><span class="faq-q-mark">Q.</span><span>最低契約期間はありますか？</span></div>
+        <p class="faq-a">原則として6ヶ月〜のご契約をお願いしております。短期間の施策で終わらせるのではなく、データ検証と改善を繰り返しながら、持続的な集客につながる仕組みづくりを行うためです。</p>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q"><span class="faq-q-mark">Q.</span><span>チェーン店でも利用可能ですか？</span></div>
+        <p class="faq-a">もちろん可能です。チェーン店ならではの強みを含めて訴求と来客に繋げる支援をさせていただきます。</p>
+      </div>
+    </div>
+
+    <div style="margin-top:40px;max-width:720px;">
+      <p style="font-size:12px;color:var(--text-sub);margin-bottom:16px;">上記以外のご不明点があれば、お気軽にお問い合わせください。</p>
+      <a href="#contact" class="btn-outline">無料相談フォームへ</a>
+    </div>
   </div>
 </div>
 
