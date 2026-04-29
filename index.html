@@ -204,6 +204,126 @@
       outline-offset: 3px;
       border-radius: 4px;
     }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      background: var(--dark-bg);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding-top: 68px;
+    }
+
+    /* ドットグリッド */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* blob */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+    .blob-1 {
+      width: 600px; height: 600px;
+      background: rgba(99,102,241,0.35);
+      top: -200px; right: -150px;
+      animation: blobFloat 8s ease-in-out infinite;
+    }
+    .blob-2 {
+      width: 500px; height: 500px;
+      background: rgba(124,58,237,0.3);
+      bottom: -150px; left: -100px;
+      animation: blobFloat 8s ease-in-out infinite;
+      animation-delay: -3s;
+    }
+    .blob-3 {
+      width: 400px; height: 400px;
+      background: rgba(236,72,153,0.25);
+      top: 40%; left: 40%;
+      animation: blobFloat 8s ease-in-out infinite;
+      animation-delay: -5s;
+    }
+
+    @keyframes blobFloat {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      33%       { transform: translate(30px,-40px) scale(1.05); }
+      66%       { transform: translate(-20px,20px) scale(.95); }
+    }
+
+    /* Hero コンテンツ */
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 24px;
+      width: 100%;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(99,102,241,0.15);
+      border: 1px solid rgba(99,102,241,0.3);
+      color: #a5b4fc;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+    .hero-h1 {
+      font-size: clamp(36px, 6vw, 72px);
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin: 0 0 24px;
+      max-width: 700px;
+    }
+    .hero-sub {
+      font-size: 16px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.9;
+      max-width: 480px;
+      margin: 0 0 40px;
+    }
+    .hero-kpi {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-top: 56px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .hero-kpi-item { color: #fff; }
+    .hero-kpi-num {
+      font-size: 36px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .hero-kpi-label {
+      font-size: 11px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 1px;
+    }
   </style>
 </head>
 <body class="antialiased">
@@ -248,6 +368,56 @@
     <a href="#contact"  class="mobile-nav-link" style="color:var(--indigo);font-weight:700;">無料相談に申し込む →</a>
   </nav>
 </nav>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <div class="hero-content reveal">
+    <div class="hero-badge">
+      <i data-lucide="map-pin" style="width:12px;height:12px;"></i>
+      SNS × MEO CONSULTING — 大田区特化
+    </div>
+
+    <h1 class="hero-h1">
+      「美味しい」を、<br>
+      <span class="grad-text-light">大田区に届ける。</span>
+    </h1>
+
+    <p class="hero-sub">
+      見つけてもらえなければ、届かない。<br>
+      認知から来店に繋げる集客基盤を構築します。
+    </p>
+
+    <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;">
+      <a href="#contact" class="btn-primary">
+        まずは無料相談してみる
+        <i data-lucide="arrow-right" style="width:16px;height:16px;margin-left:8px;"></i>
+      </a>
+      <a href="#services" class="btn-ghost">
+        サービスを見る
+        <i data-lucide="chevron-right" style="width:14px;height:14px;margin-left:4px;"></i>
+      </a>
+    </div>
+
+    <div class="hero-kpi">
+      <div class="hero-kpi-item">
+        <div class="hero-kpi-num grad-text-light">+150<span style="font-size:20px;">%</span></div>
+        <div class="hero-kpi-label">週末来客数アップ事例</div>
+      </div>
+      <div class="hero-kpi-item">
+        <div class="hero-kpi-num grad-text-light">3-6<span style="font-size:20px;">ヶ月</span></div>
+        <div class="hero-kpi-label">効果実感までの目安</div>
+      </div>
+      <div class="hero-kpi-item">
+        <div class="hero-kpi-num grad-text-light">大田区<span style="font-size:20px;">特化</span></div>
+        <div class="hero-kpi-label">地域密着メディア運営</div>
+      </div>
+    </div>
+  </div>
+</section>
 
 </body>
 </html>
