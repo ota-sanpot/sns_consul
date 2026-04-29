@@ -529,6 +529,59 @@
       line-height: 1.8;
       margin: 0;
     }
+
+    /* 事例カード */
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 24px;
+    }
+    .case-card {
+      background: #ffffff;
+      border: 1px solid #f0f0f0;
+      border-radius: 16px;
+      padding: 32px 28px;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .case-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(99,102,241,0.08);
+    }
+    .case-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--text-sub);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .case-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.45;
+      margin: 0 0 20px;
+    }
+    .case-block {
+      background: var(--light-bg);
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin-bottom: 12px;
+    }
+    .case-block-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--indigo);
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+    .case-block-body {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-sub);
+      line-height: 1.8;
+      margin: 0;
+    }
   </style>
 </head>
 <body class="antialiased">
@@ -814,6 +867,43 @@
         <div>
           <h3 class="flow-title">効果確認とブラッシュアップ</h3>
           <p class="flow-body">リピーター創出・ブランディング向上のための企画立案〜実行のPDCAを回します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Cases Section -->
+<div id="cases" class="section-bg-light section-wrap">
+  <div class="section reveal">
+    <span class="section-label" style="color:var(--indigo);">CASE STUDY</span>
+    <h2 class="section-heading">支援実績・事例</h2>
+    <p class="section-sub">単なるSNS運用にとどまらず、店舗に合わせた具体的な施策をご提案し、確かな集客・売上アップに貢献しています。</p>
+
+    <div class="case-grid">
+      <div class="case-card reveal reveal-delay-1">
+        <div class="case-tag">イタリアンバル / 居酒屋</div>
+        <h3 class="case-title">「週末限定メニュー」の考案で<br>週末の来客数が約1.5倍に増加</h3>
+        <div class="case-block">
+          <div class="case-block-label">施策内容</div>
+          <p class="case-block-body">週末の集客に課題を抱えていた店舗様に対し、特別感のある「週末限定メニュー」を提案・共同開発。そのメニューの魅力を最大限に引き出すシズル感のある写真とショート動画を制作し、事前告知を含めてInstagramで集中的に発信しました。</p>
+        </div>
+        <div class="case-block">
+          <div class="case-block-label">結果</div>
+          <p class="case-block-body">「限定メニューを目当てに来店した」という新規顧客が増加し、週末全体での来客数が約1.5倍に。さらに来店客によるSNSへの口コミ投稿（UGC）も自然発生するサイクルが生まれました。</p>
+        </div>
+      </div>
+
+      <div class="case-card reveal reveal-delay-2">
+        <div class="case-tag">大衆居酒屋 / バル</div>
+        <h3 class="case-title">「写真映え」する新メニュー開発で<br>20〜30代の新規予約が急増</h3>
+        <div class="case-block">
+          <div class="case-block-label">施策内容</div>
+          <p class="case-block-body">客層が固定化しており、若年層の新規獲得が課題でした。そこで、既存の食材を活用しつつインパクトのある「写真映え」する新メニューを考案し、Reels動画を活用してアピールを行いました。</p>
+        </div>
+        <div class="case-block">
+          <div class="case-block-label">結果</div>
+          <p class="case-block-body">若年層をターゲットにした動画のリーチ数が跳ね上がり、短期間でフォロワーが急増。20代〜30代の若年層からの予約殺到に繋がり、平日ディナー帯も満席になる日が増えました。</p>
         </div>
       </div>
     </div>
