@@ -693,9 +693,11 @@
     /* 料金プラン */
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 24px;
       align-items: start;
+      max-width: 720px;
+      margin: 0 auto;
     }
     @media (max-width: 768px) {
       .pricing-grid { grid-template-columns: 1fr; }
@@ -1516,7 +1518,7 @@ body.has-cursor button { cursor: none !important; }
       </p>
     </div>
 
-    <div class="pricing-grid" style="max-width:720px;margin:0 auto;grid-template-columns:repeat(2,1fr);">
+    <div class="pricing-grid">
       <!-- Plan 1: ライト -->
       <div class="pricing-card reveal reveal-delay-1">
         <div class="pricing-card-label" style="color:var(--text-sub);">LIGHT</div>
