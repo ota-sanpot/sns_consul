@@ -795,6 +795,94 @@
     }
     .pricing-card.featured .pricing-check { color: #a5b4fc; }
 
+    /* オプションカード */
+    .option-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    @media (max-width: 768px) {
+      .option-grid { grid-template-columns: 1fr; }
+    }
+    .option-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 20px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .option-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.08);
+    }
+    .option-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--grad-main);
+    }
+    .option-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--text-sub);
+      margin-bottom: 12px;
+    }
+    .option-name {
+      font-size: 17px;
+      font-weight: 900;
+      color: var(--text-main);
+      margin: 0 0 10px;
+      letter-spacing: -0.3px;
+    }
+    .option-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-sub);
+      line-height: 1.75;
+      margin: 0 0 24px;
+      flex-grow: 1;
+    }
+    .option-prices {
+      display: flex;
+      gap: 28px;
+      margin-bottom: 24px;
+      align-items: flex-end;
+    }
+    .option-price-item { display: flex; flex-direction: column; gap: 3px; }
+    .option-price-lbl {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      color: var(--text-sub);
+    }
+    .option-price-val {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      color: var(--text-main);
+    }
+    .option-price-val.free {
+      background: var(--grad-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .option-consult {
+      font-size: 19px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: var(--text-main);
+      margin-bottom: 24px;
+    }
+
     /* FAQ */
     .faq-list {
       display: flex;
@@ -1489,40 +1577,37 @@ body.has-cursor button { cursor: none !important; }
     </p>
 
     <!-- オプション -->
-    <div style="margin-top:56px;">
-      <div style="text-align:center;margin-bottom:32px;">
+    <div style="margin-top:64px;">
+      <div style="text-align:center;margin-bottom:36px;">
         <span class="section-label" style="color:var(--indigo);">OPTION</span>
-        <h3 style="font-size:20px;font-weight:700;color:var(--text-main);margin:8px 0 0;">オプションサービス</h3>
+        <h3 style="font-size:22px;font-weight:900;color:var(--text-main);margin:8px 0 8px;letter-spacing:-0.5px;">オプションサービス</h3>
+        <p style="font-size:13px;font-weight:300;color:var(--text-sub);">プランに追加できるオプションをご用意しています。</p>
       </div>
-
-      <div style="display:flex;flex-wrap:wrap;gap:20px;justify-content:center;">
-        <!-- HP制作オプション -->
-        <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px 32px;max-width:420px;flex:1 1 280px;">
-          <div style="font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--indigo);margin-bottom:8px;">シンプルHP制作</div>
-          <h4 style="font-size:17px;font-weight:700;color:var(--text-main);margin:0 0 6px;">【維持費¥0】ホームページ制作</h4>
-          <p style="font-size:13px;color:var(--text-sub);line-height:1.7;margin:0 0 16px;">「メニュー」と「店主の想い」を伝えることに特化した、スマホで見やすい高速HPを制作します。一度作れば、サーバー代などの維持費は一生かかりません。</p>
-          <div style="display:flex;gap:24px;align-items:baseline;">
-            <div>
-              <div style="font-size:11px;color:var(--text-sub);margin-bottom:2px;">制作費</div>
-              <div style="font-size:20px;font-weight:700;color:var(--text-main);">¥22,000<span style="font-size:12px;font-weight:400;">（税込）〜</span></div>
+      <div class="option-grid">
+        <!-- HP制作 -->
+        <div class="option-card reveal">
+          <div class="option-label">OPTION 01</div>
+          <h4 class="option-name">【維持費¥0】シンプル・ホームページ制作</h4>
+          <p class="option-desc">「メニュー」と「店主の想い」を伝えることに特化した、スマホで見やすい高速HPを制作します。一度作れば、サーバー代などの維持費は一生かかりません。</p>
+          <div class="option-prices">
+            <div class="option-price-item">
+              <span class="option-price-lbl">制作費</span>
+              <span class="option-price-val">¥22,000<small style="font-size:12px;font-weight:400;letter-spacing:0;">（税込）〜</small></span>
             </div>
-            <div>
-              <div style="font-size:11px;color:var(--text-sub);margin-bottom:2px;">月額費用</div>
-              <div style="font-size:20px;font-weight:700;color:var(--indigo);">¥0</div>
+            <div class="option-price-item">
+              <span class="option-price-lbl">月額維持費</span>
+              <span class="option-price-val free">¥0</span>
             </div>
           </div>
+          <a href="#contact" class="btn-outline">相談する</a>
         </div>
-
-        <!-- PR連携オプション -->
-        <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px 32px;max-width:420px;flex:1 1 280px;">
-          <div style="font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--indigo);margin-bottom:8px;">メディア連携</div>
-          <h4 style="font-size:17px;font-weight:700;color:var(--text-main);margin:0 0 6px;">SNS・メディアとの連携PR</h4>
-          <p style="font-size:13px;color:var(--text-sub);line-height:1.7;margin:0 0 16px;">大田区サンポットのSNSアカウントやメディアネットワークを活用した連携PR施策です。内容・規模に応じて柔軟にご対応します。</p>
-          <div>
-            <div style="font-size:11px;color:var(--text-sub);margin-bottom:2px;">料金</div>
-            <div style="font-size:18px;font-weight:700;color:var(--text-main);">内容により要相談</div>
-          </div>
-          <a href="#contact" style="display:inline-block;margin-top:16px;font-size:13px;color:var(--indigo);font-weight:600;text-decoration:none;">詳しく相談する →</a>
+        <!-- PR連携 -->
+        <div class="option-card reveal reveal-delay-1">
+          <div class="option-label">OPTION 02</div>
+          <h4 class="option-name">SNS・メディア連携PR</h4>
+          <p class="option-desc">大田区サンポットのSNSアカウントやメディアネットワークを活用した連携PR施策です。内容・規模に応じて柔軟にご対応します。</p>
+          <div class="option-consult">内容により要相談</div>
+          <a href="#contact" class="btn-outline">詳しく相談する →</a>
         </div>
       </div>
     </div>
