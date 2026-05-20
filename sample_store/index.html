@@ -162,7 +162,7 @@
         夜更けに、<br class="md:hidden">ひとくちの贅沢を。
       </p>
 
-      <a href="#info" class="mt-14 inline-flex items-center gap-3 px-8 py-4 border border-kinari/80 text-kinari text-xs tracking-jumbo hover:bg-kinari hover:text-sumi transition-colors duration-500 reveal">
+      <a href="#reservation" class="mt-14 inline-flex items-center gap-3 px-8 py-4 border border-kinari/80 text-kinari text-xs tracking-jumbo hover:bg-kinari hover:text-sumi transition-colors duration-500 reveal">
         <span>お席のご予約</span>
         <i class="fa-solid fa-arrow-right text-[10px]"></i>
       </a>
@@ -434,13 +434,42 @@
       </div>
 
       <!-- 予約CTA -->
-      <div class="mt-24 text-center">
+      <div id="reservation" class="mt-24 text-center">
         <div class="hairline w-32 mx-auto mb-12"></div>
-        <p class="font-mincho text-lg md:text-xl tracking-wider2 mb-8">ご予約は、お電話にて承っております。</p>
-        <a href="tel:0000000000" class="inline-flex items-center gap-4 px-10 py-5 bg-sumi text-kinari text-sm tracking-jumbo hover:bg-gold transition-colors duration-500">
-          <i class="fa-solid fa-phone"></i>
-          <span>03 – 0000 – 0000</span>
-        </a>
+        <p class="font-mincho text-lg md:text-xl tracking-wider2 mb-3">ご予約はこちらから</p>
+        <p class="font-cormo italic text-sm tracking-wider2 text-sub mb-12">— Reservation —</p>
+
+        <div class="grid md:grid-cols-3 gap-4 md:gap-6 max-w-3xl mx-auto">
+
+          <!-- 電話 -->
+          <a href="tel:0000000000"
+             class="group flex flex-col items-center justify-center gap-2 py-8 px-4 bg-sumi text-kinari hover:bg-gold transition-colors duration-500">
+            <i class="fa-solid fa-phone text-lg mb-1"></i>
+            <span class="font-mincho text-base tracking-wider2">お電話で予約</span>
+            <span class="font-cormo italic text-xs tracking-wider2 text-kinari/70 group-hover:text-kinari">03 – 0000 – 0000</span>
+          </a>
+
+          <!-- 食べログ -->
+          <a href="#" target="_blank" rel="noopener"
+             class="group flex flex-col items-center justify-center gap-2 py-8 px-4 border border-sumi text-sumi hover:bg-sumi hover:text-kinari transition-colors duration-500">
+            <i class="fa-solid fa-utensils text-lg mb-1"></i>
+            <span class="font-mincho text-base tracking-wider2">食べログから予約</span>
+            <span class="font-cormo italic text-xs tracking-wider2 text-sub group-hover:text-kinari/70">Tabelog</span>
+          </a>
+
+          <!-- ホットペッパー -->
+          <a href="#" target="_blank" rel="noopener"
+             class="group flex flex-col items-center justify-center gap-2 py-8 px-4 border border-sumi text-sumi hover:bg-sumi hover:text-kinari transition-colors duration-500">
+            <i class="fa-solid fa-pepper-hot text-lg mb-1"></i>
+            <span class="font-mincho text-base tracking-wider2">ホットペッパーから予約</span>
+            <span class="font-cormo italic text-xs tracking-wider2 text-sub group-hover:text-kinari/70">Hot Pepper</span>
+          </a>
+
+        </div>
+
+        <p class="mt-10 font-serif text-sub text-xs tracking-wider2">
+          ※ ご宴会・貸切のご相談は、お電話にて承ります
+        </p>
       </div>
     </div>
   </section>
@@ -462,7 +491,7 @@
       <i class="fa-solid fa-phone text-xs"></i>
       <span>お電話</span>
     </a>
-    <a href="#info" class="flex items-center justify-center gap-2 py-4 bg-sumi text-kinari text-sm tracking-wider2">
+    <a href="#reservation" class="flex items-center justify-center gap-2 py-4 bg-sumi text-kinari text-sm tracking-wider2">
       <i class="fa-solid fa-calendar text-xs"></i>
       <span>ご予約</span>
     </a>
