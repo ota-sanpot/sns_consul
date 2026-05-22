@@ -32,5 +32,11 @@
 - [ ] Instagram bio・TikTok bio に予約URL設置
 - [ ] 既存Instagram投稿30件のエンゲージメント分析
 - [ ] 初回現地撮影日の確定
+
+### 2026-05-22
+- 来週キックオフミーティング予定
+- ヒアリングシートをGoogleスプレッドシートで作成（[[hearing_sheet.md]]に構成記録）
+- スプレッドシート URL: https://docs.google.com/spreadsheets/d/1aH_m9OkIDAlGAyz-veELBuDRWfHoRuxHd4pbleKUKJ0/edit
+- 10セクション45問（重要度★★★/★★/★で区分）
 - [ ] 20時以降特典の有無をオーナーに相談
 - [ ] TikTokアカウント開設
