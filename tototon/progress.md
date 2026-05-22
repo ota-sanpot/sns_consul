@@ -37,8 +37,10 @@
 - 来週キックオフミーティング予定
 - ヒアリングシートをGoogleスプレッドシートで作成（[[hearing_sheet.md]]に構成記録）
 - スプレッドシート URL (v1): https://docs.google.com/spreadsheets/d/1aH_m9OkIDAlGAyz-veELBuDRWfHoRuxHd4pbleKUKJ0/edit
-- スプレッドシート URL (v2 / 最新・ポイント／意図メモ列を追加): https://docs.google.com/spreadsheets/d/1HYrxFDOS8K_iiq2WpElERhk2qf2wnv8AQ04JUfy-DSo/edit
-- 10セクション45問（重要度★★★/★★/★で区分）+ 各質問にポイント／意図メモ
-- v1は削除推奨
+- スプレッドシート URL (v2): https://docs.google.com/spreadsheets/d/1HYrxFDOS8K_iiq2WpElERhk2qf2wnv8AQ04JUfy-DSo/edit
+- スプレッドシート URL (**v3 / 最新**): https://docs.google.com/spreadsheets/d/1f3JPa_t60a8rBkX9LxE_u5E8hEeTBItSP0aLShFm19A/edit
+- 18セクション81問（重要度★★★/★★/★で区分）+ 各質問にポイント／意図メモ
+- v3で追加：⑪アカウント・ログイン情報、⑫ブランド・アセット、⑬既存素材、⑭NG事項・運用ルール、⑮既存契約・他施策、⑯緊急・トラブル対応、⑰撮影実務・経費、⑱オプション
+- v1・v2は削除推奨
 - [ ] 20時以降特典の有無をオーナーに相談
 - [ ] TikTokアカウント開設
