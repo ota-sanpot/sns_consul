@@ -36,7 +36,9 @@
 ### 2026-05-22
 - 来週キックオフミーティング予定
 - ヒアリングシートをGoogleスプレッドシートで作成（[[hearing_sheet.md]]に構成記録）
-- スプレッドシート URL: https://docs.google.com/spreadsheets/d/1aH_m9OkIDAlGAyz-veELBuDRWfHoRuxHd4pbleKUKJ0/edit
-- 10セクション45問（重要度★★★/★★/★で区分）
+- スプレッドシート URL (v1): https://docs.google.com/spreadsheets/d/1aH_m9OkIDAlGAyz-veELBuDRWfHoRuxHd4pbleKUKJ0/edit
+- スプレッドシート URL (v2 / 最新・ポイント／意図メモ列を追加): https://docs.google.com/spreadsheets/d/1HYrxFDOS8K_iiq2WpElERhk2qf2wnv8AQ04JUfy-DSo/edit
+- 10セクション45問（重要度★★★/★★/★で区分）+ 各質問にポイント／意図メモ
+- v1は削除推奨
 - [ ] 20時以降特典の有無をオーナーに相談
 - [ ] TikTokアカウント開設
