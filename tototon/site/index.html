@@ -947,6 +947,100 @@ section.block{padding:clamp(90px,12vw,160px) 0;position:relative}
 .foot-meta a:hover{color:#fff}
 
 /* ============================================================
+   COURSE — bundled course offerings with prices
+   ============================================================ */
+.course{background:var(--paper);position:relative}
+.course .chapter-num{top:48px;right:4%;color:rgba(15,12,9,.04)}
+.course-head{margin-bottom:72px}
+.course-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:32px;
+}
+@media (min-width:780px){.course-grid{grid-template-columns:repeat(3,1fr);gap:32px}}
+.course-card{
+  position:relative;
+  display:flex;flex-direction:column;
+  background:var(--paper-2);
+  border:1px solid var(--line);
+  padding:36px 32px 32px;
+  transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .5s ease;
+}
+.course-card:hover{transform:translateY(-3px);box-shadow:0 20px 48px -24px rgba(0,0,0,.12)}
+.course-card.feature{background:var(--ink);color:#fff;border-color:var(--ink)}
+.course-card.feature .c-lab{color:var(--gold-soft)}
+.course-card.feature .c-title{color:#fff}
+.course-card.feature .c-desc{color:rgba(255,255,255,.7)}
+.course-card.feature .c-price{color:#fff;border-color:rgba(255,255,255,.2)}
+.course-card.feature .c-price .yen{color:var(--gold-soft)}
+.course-card.feature .c-meta{color:var(--gold-soft)}
+.course-card .ribbon{
+  position:absolute;
+  top:-1px;right:24px;
+  background:var(--gold);
+  color:var(--ink);
+  font-family:var(--ff-sans);
+  font-size:9px;letter-spacing:.35em;
+  font-weight:600;text-transform:uppercase;
+  padding:7px 12px;
+}
+.course-card .c-lab{
+  font-family:var(--ff-sans);
+  font-size:10px;letter-spacing:.4em;
+  color:var(--gold);font-weight:500;
+  text-transform:uppercase;
+  margin-bottom:14px;
+}
+.course-card .c-title{
+  font-family:var(--ff-mincho);font-weight:500;
+  font-size:20px;line-height:1.55;letter-spacing:.04em;
+  color:var(--ink);
+  margin-bottom:18px;min-height:62px;
+}
+.course-card .c-desc{
+  font-family:var(--ff-jp);font-weight:400;
+  font-size:12.5px;line-height:1.95;color:var(--text-2);
+  margin-bottom:24px;flex:1;
+}
+.course-card .c-price{
+  display:flex;align-items:baseline;gap:6px;
+  padding-top:20px;
+  border-top:1px solid var(--line);
+  font-family:var(--ff-mincho);font-weight:500;
+  font-size:28px;letter-spacing:.04em;color:var(--ink);
+  line-height:1;
+}
+.course-card .c-price .yen{font-size:14px;color:var(--gold);margin-right:2px}
+.course-card .c-price .tax{
+  font-family:var(--ff-sans);font-size:10px;
+  color:var(--muted);letter-spacing:.2em;margin-left:8px;font-weight:400;
+}
+.course-card .c-meta{
+  margin-top:10px;
+  font-family:var(--ff-sans);font-size:10px;letter-spacing:.25em;
+  color:var(--gold);font-weight:500;text-transform:uppercase;
+}
+.course-foot{
+  margin-top:64px;text-align:center;
+  font-family:var(--ff-mincho);font-weight:500;
+  font-size:14px;line-height:2.1;letter-spacing:.06em;color:var(--ink);
+}
+.course-foot em{font-style:normal;color:var(--gold);font-weight:700}
+
+/* SAKE drinks strip */
+.sake-drinks{
+  margin-top:64px;padding-top:32px;
+  border-top:1px solid rgba(255,255,255,.15);
+  display:flex;flex-wrap:wrap;gap:14px 28px;
+  font-family:var(--ff-sans);
+  font-size:11px;letter-spacing:.32em;
+  color:var(--gold-soft);font-weight:500;
+  text-transform:uppercase;
+}
+.sake-drinks span{display:inline-flex;align-items:center}
+.sake-drinks span + span::before{content:"／";color:rgba(255,255,255,.25);margin-right:28px}
+
+/* ============================================================
    Mobile fine-tuning
    ============================================================ */
 @media (max-width:560px){
@@ -1039,52 +1133,97 @@ section.block{padding:clamp(90px,12vw,160px) 0;position:relative}
         </div>
         <div class="body">
           <p class="label">Sashimi</p>
-          <h3>朝〆 本日の盛り合わせ</h3>
-          <p>その日の市場から届いた魚を、店主が選び、店主が切る。三点盛りから、季節の五点盛りまで。</p>
+          <h3>漁港直送 朝〆<br>本日のお刺身盛り合わせ</h3>
+          <p>毎日、全国の漁港から朝〆で直送される旬の魚。<em>その日の海</em>を、店主が選び、店主が切る一皿。</p>
         </div>
       </article>
 
       <article class="sig-card s-02 reveal reveal-delay-1">
         <div class="photo">
-          <img src="https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?auto=format&fit=crop&w=1200&q=80" alt="本マグロのレアカツ — 仮写真" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?auto=format&fit=crop&w=1200&q=80" alt="生本鮪のレアカツ — 仮写真" loading="lazy">
           <span class="num">02</span>
         </div>
         <div class="body">
           <p class="label">Speciality</p>
-          <h3>本マグロのレアカツ</h3>
+          <h3>生本鮪のレアカツ</h3>
           <p>表面だけを軽く纏わせ、中はとろりと。日本酒に合わせる、魚魚呑流のひと皿。</p>
         </div>
       </article>
 
       <article class="sig-card s-03 reveal reveal-delay-2">
         <div class="photo">
-          <img src="https://images.unsplash.com/photo-1599134842279-fe807d23316e?auto=format&fit=crop&w=1200&q=80" alt="富士山サーモンのレアカツ — 仮写真" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=1200&q=80" alt="フグの子ピザ — 仮写真" loading="lazy">
           <span class="num">03</span>
         </div>
         <div class="body">
           <p class="label">Speciality</p>
-          <h3>富士山サーモンのレアカツ</h3>
-          <p>山梨育ちの希少なサーモンを、わが店流のレアカツ仕立てで。脂と酸味のバランスを、純米酒と。</p>
+          <h3>フグの子ピザ</h3>
+          <p>魚魚呑だけの一枚。<em>希少なフグの子</em>を、ピザ仕立てで仕上げる、ほかでは出会えない名物。</p>
         </div>
       </article>
 
     </div>
 
-    <p class="sig-note reveal">そのほか、季節の<span>煮魚・焼き物・揚げ物</span>も。お品書きは、来店時に。</p>
+    <p class="sig-note reveal">人気は <span>日本酒3種飲み比べ</span>と、<span>生ビール</span>を添えて。<br>そのほか、季節の煮魚・焼き物・揚げ物も。</p>
+  </div>
+</section>
+
+<!-- ===== COURSE ===== -->
+<section class="block course" id="course">
+  <div class="chapter-num" aria-hidden="true">III</div>
+  <div class="wrap">
+    <div class="course-head sig-head">
+      <div>
+        <p class="eyebrow reveal">— III —&nbsp;&nbsp;Course</p>
+        <h2 class="h-display reveal reveal-delay-1" style="margin-top:20px;">コースで、<em>ひと夜</em>を整える。</h2>
+      </div>
+      <p class="lead reveal reveal-delay-2">宴会、記念日、接待にも。<br>2時間飲み放題の手軽な一夜から、活〆真鯛のプレミアムまで。</p>
+    </div>
+
+    <div class="course-grid">
+
+      <article class="course-card feature reveal">
+        <span class="ribbon">No. 1</span>
+        <p class="c-lab">Signature Course</p>
+        <h3 class="c-title">富士山サーモンのレアカツ<br>イチオシコース</h3>
+        <p class="c-desc">全7品の人気No.1コース。希少な富士山サーモンのレアカツを軸に、刺身・揚げ物まで魚魚呑の真髄を一夜で。</p>
+        <p class="c-price"><span class="yen">¥</span>5,000<span class="tax">税込</span></p>
+        <p class="c-meta">All 7 dishes ／ +¥1,000 でプレミアム日本酒3種付き</p>
+      </article>
+
+      <article class="course-card reveal reveal-delay-1">
+        <p class="c-lab">Recommended</p>
+        <h3 class="c-title">活〆真鯛の<br>しゃぶしゃぶコース</h3>
+        <p class="c-desc">全8品、活〆真鯛をしゃぶしゃぶで主役に据えた特別構成。記念日・接待・大切な一夜に。</p>
+        <p class="c-price"><span class="yen">¥</span>6,000<span class="tax">税込</span></p>
+        <p class="c-meta">All 8 dishes ／ +¥1,000 でプレミアム日本酒3種付き</p>
+      </article>
+
+      <article class="course-card reveal reveal-delay-2">
+        <p class="c-lab">Casual</p>
+        <h3 class="c-title">2時間 単品 <br>飲み放題コース</h3>
+        <p class="c-desc">気のおけない仲間や、仕事帰りに。お料理は単品で自由に。お酒だけ気にせず楽しめる定番。</p>
+        <p class="c-price"><span class="yen">¥</span>2,980<span class="tax">税込</span></p>
+        <p class="c-meta">クーポンで ¥2,580 ／ 2時間制</p>
+      </article>
+
+    </div>
+
+    <p class="course-foot reveal">コースは <em>+¥1,000</em> でプレミアム日本酒3種付きへ。<br>ご予約は <a href="#reserve" style="color:var(--ink);border-bottom:1px solid var(--gold);">こちら</a>。</p>
   </div>
 </section>
 
 <!-- ===== SAKE (immersive 藍) ===== -->
 <section class="block sake" id="sake">
-  <div class="chapter-num" aria-hidden="true">III</div>
+  <div class="chapter-num" aria-hidden="true">IV</div>
   <span class="sake-vlat" aria-hidden="true">SAKE — A QUIET COMPANION</span>
   <div class="wrap">
     <div class="sake-grid">
       <div class="sake-text">
-        <p class="eyebrow dark reveal">— III —&nbsp;&nbsp;Sake</p>
+        <p class="eyebrow dark reveal">— IV —&nbsp;&nbsp;Sake</p>
         <h2 class="h-display light reveal reveal-delay-1">全国の蔵元から、<br><em>純米酒</em>を。</h2>
         <div class="sake-rule reveal reveal-delay-2"></div>
-        <p class="reveal reveal-delay-2">日本酒マイスター常駐。<br>季節と仕入れで入れ替わる、月替わりの一合を。<br>初めての一杯から、いつもの一本まで、お気軽にお尋ねください。</p>
+        <p class="reveal reveal-delay-2"><span style="color:var(--gold-soft);font-weight:700;">日本酒マイスター</span>常駐。<br>蔵元との直接取引でしか出会えない、希少な地酒を日替わりで。<br>初めての一杯は、まず <span style="color:var(--gold-soft);font-weight:700;">3種飲み比べ</span> から。</p>
         <div class="sake-stats">
           <div class="stat reveal">
             <p class="lab">Lineup</p>
@@ -1099,6 +1238,10 @@ section.block{padding:clamp(90px,12vw,160px) 0;position:relative}
             <p class="val">魚に合わせて</p>
           </div>
         </div>
+
+        <div class="sake-drinks reveal">
+          <span>Sake</span><span>Shochu</span><span>Wine</span><span>Cocktail</span><span>Kirin Beer</span>
+        </div>
       </div>
       <div class="sake-photo reveal reveal-delay-1">
         <img src="https://images.unsplash.com/photo-1582106245687-cbb466a9f07f?auto=format&fit=crop&w=1400&q=80" alt="全国の純米酒 — 仮写真" loading="lazy">
@@ -1109,7 +1252,7 @@ section.block{padding:clamp(90px,12vw,160px) 0;position:relative}
 
 <!-- ===== STORY ===== -->
 <section class="block story" id="story">
-  <div class="chapter-num" aria-hidden="true">IV</div>
+  <div class="chapter-num" aria-hidden="true">V</div>
   <div class="wrap">
     <div class="story-grid">
       <div class="story-photo reveal">
@@ -1117,16 +1260,16 @@ section.block{padding:clamp(90px,12vw,160px) 0;position:relative}
         <span class="story-vlat" aria-hidden="true">A NOTE FROM THE KITCHEN</span>
       </div>
       <div class="story-text">
-        <p class="eyebrow dark reveal">— IV —&nbsp;&nbsp;Story</p>
+        <p class="eyebrow dark reveal">— V —&nbsp;&nbsp;Story</p>
         <h2 class="h-display light reveal reveal-delay-1">魚と、酒と、<em>店主の仕事</em>。</h2>
         <p class="reveal reveal-delay-2">朝、市場へ。<br>その日の海と、その日の魚を見て、選ぶ。</p>
         <p class="reveal reveal-delay-2">店に戻り、捌き、寝かせ、整える。<br>合わせるのは、全国の蔵元から届く<em>純米酒</em>。</p>
         <p class="reveal reveal-delay-3">魚と、酒と、その夜のお客様と。<br>それだけを、ずっと続けています。</p>
 
-        <!-- 受賞バッジ枠（オーナー許諾後に data-empty="false" に変更して表示） -->
-        <div class="award-badge reveal" data-empty="true" aria-hidden="true">
+        <!-- 受賞バッジ（オーナー確認済み） -->
+        <div class="award-badge reveal" data-empty="false">
           <span class="lab">Awarded</span>
-          <p>キリンビール『うまい生ビールアワード』<br>2016・2017 連続受賞店</p>
+          <p>キリンビール『<em style="font-style:normal;color:#fff;font-weight:700;">全国うまいビール各店100選</em>』<br>2年連続選出店</p>
         </div>
       </div>
     </div>
@@ -1135,11 +1278,11 @@ section.block{padding:clamp(90px,12vw,160px) 0;position:relative}
 
 <!-- ===== SPACE ===== -->
 <section class="block space" id="space">
-  <div class="chapter-num" aria-hidden="true">V</div>
+  <div class="chapter-num" aria-hidden="true">VI</div>
   <div class="wrap">
     <div class="sig-head" style="margin-bottom:56px;">
       <div>
-        <p class="eyebrow reveal">— V —&nbsp;&nbsp;Space</p>
+        <p class="eyebrow reveal">— VI —&nbsp;&nbsp;Space</p>
         <h2 class="h-display reveal reveal-delay-1" style="margin-top:20px;">夜の、<em>居場所</em>を。</h2>
       </div>
       <p class="lead reveal reveal-delay-2">個室、ボックス、カウンター。<br>その日のシーンに、ちょうどいい席を。</p>
@@ -1193,11 +1336,11 @@ section.block{padding:clamp(90px,12vw,160px) 0;position:relative}
 
 <!-- ===== HOURS ===== -->
 <section class="block hours" id="hours">
-  <div class="chapter-num" aria-hidden="true">VI</div>
+  <div class="chapter-num" aria-hidden="true">VII</div>
   <div class="wrap">
     <div class="hours-grid">
       <div>
-        <p class="eyebrow reveal">— VI —&nbsp;&nbsp;Hours</p>
+        <p class="eyebrow reveal">— VII —&nbsp;&nbsp;Hours</p>
         <h2 class="h-display reveal reveal-delay-1" style="margin:20px 0 28px;">営業の<em>ご案内</em>。</h2>
         <div class="hours-foot reveal reveal-delay-2">
           <p>週末は <em>深夜2時</em> までの営業。<br>仕事帰りの一杯、二次会、<br>夜更けの一皿に。</p>
@@ -1227,10 +1370,10 @@ section.block{padding:clamp(90px,12vw,160px) 0;position:relative}
 
 <!-- ===== ACCESS ===== -->
 <section class="block access" id="access">
-  <div class="chapter-num" aria-hidden="true">VII</div>
+  <div class="chapter-num" aria-hidden="true">VIII</div>
   <div class="wrap">
     <div class="access-head">
-      <p class="eyebrow reveal">— VII —&nbsp;&nbsp;Access</p>
+      <p class="eyebrow reveal">— VIII —&nbsp;&nbsp;Access</p>
       <h2 class="h-display reveal reveal-delay-1" style="margin-top:20px;">蒲田駅 東口、<em>徒歩2分</em>。</h2>
     </div>
 
@@ -1270,7 +1413,7 @@ section.block{padding:clamp(90px,12vw,160px) 0;position:relative}
     <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=2000&q=80" alt="" loading="lazy">
   </div>
   <div class="reserve-inner">
-    <p class="eyebrow dark reveal">— VIII —&nbsp;&nbsp;Reserve</p>
+    <p class="eyebrow dark reveal">— IX —&nbsp;&nbsp;Reserve</p>
     <h2 class="reserve-head reveal reveal-delay-1">お席を、<em>ご予約ください</em>。</h2>
     <p class="reserve-sub reveal reveal-delay-2">
       週末は <em>深夜2:00</em> までの営業。<br>
@@ -1299,12 +1442,13 @@ section.block{padding:clamp(90px,12vw,160px) 0;position:relative}
       <ul class="idx">
         <li><a href="#top"><span class="n">00</span>Top</a></li>
         <li><a href="#signature"><span class="n">II</span>Signature</a></li>
-        <li><a href="#sake"><span class="n">III</span>Sake</a></li>
-        <li><a href="#story"><span class="n">IV</span>Story</a></li>
-        <li><a href="#space"><span class="n">V</span>Space</a></li>
-        <li><a href="#hours"><span class="n">VI</span>Hours</a></li>
-        <li><a href="#access"><span class="n">VII</span>Access</a></li>
-        <li><a href="#reserve"><span class="n">VIII</span>Reserve</a></li>
+        <li><a href="#course"><span class="n">III</span>Course</a></li>
+        <li><a href="#sake"><span class="n">IV</span>Sake</a></li>
+        <li><a href="#story"><span class="n">V</span>Story</a></li>
+        <li><a href="#space"><span class="n">VI</span>Space</a></li>
+        <li><a href="#hours"><span class="n">VII</span>Hours</a></li>
+        <li><a href="#access"><span class="n">VIII</span>Access</a></li>
+        <li><a href="#reserve"><span class="n">IX</span>Reserve</a></li>
       </ul>
     </div>
   </div>
