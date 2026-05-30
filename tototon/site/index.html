@@ -604,6 +604,77 @@ section.block{padding:clamp(90px,12vw,160px) 0;position:relative}
   text-transform:uppercase;
 }
 
+/* Events callout — projector / 宴会・お祝い */
+.space-event{
+  margin-top:96px;
+  padding:48px clamp(24px,4vw,56px);
+  background:var(--paper-2);
+  border:1px solid var(--line);
+  display:grid;
+  grid-template-columns:1fr;
+  gap:32px;align-items:center;
+  position:relative;
+}
+@media (min-width:780px){
+  .space-event{grid-template-columns:.75fr 1.25fr;gap:56px}
+}
+.space-event::before{
+  content:"";position:absolute;
+  top:-1px;left:-1px;width:48px;height:1px;background:var(--gold);
+}
+.space-event::after{
+  content:"";position:absolute;
+  top:-1px;left:-1px;width:1px;height:48px;background:var(--gold);
+}
+.space-event .event-mark{
+  font-family:var(--ff-mincho);
+  font-weight:700;
+  font-size:clamp(56px,7vw,96px);
+  line-height:1;letter-spacing:.06em;
+  color:var(--ink);
+  display:flex;align-items:center;gap:14px;
+}
+.space-event .event-mark span{
+  color:var(--gold);font-weight:500;font-size:.55em;
+}
+.space-event .event-body .lab{
+  font-family:var(--ff-sans);
+  font-size:10px;letter-spacing:.45em;
+  color:var(--gold);font-weight:500;
+  text-transform:uppercase;
+  display:inline-flex;align-items:center;gap:14px;
+  margin-bottom:18px;
+}
+.space-event .event-body .lab::before{
+  content:"";width:32px;height:1px;background:var(--gold);
+}
+.space-event .event-body h3{
+  font-family:var(--ff-mincho);font-weight:500;
+  font-size:clamp(20px,2.4vw,28px);
+  line-height:1.65;letter-spacing:.06em;color:var(--ink);
+  margin-bottom:18px;
+}
+.space-event .event-body h3 em{font-style:normal;color:var(--gold);font-weight:700}
+.space-event .event-body p{
+  font-family:var(--ff-jp);font-weight:400;
+  font-size:13.5px;line-height:2.1;color:var(--text-2);
+}
+.space-event .event-body p em{font-style:normal;color:var(--ink);font-weight:500;border-bottom:1px solid var(--gold-soft);padding-bottom:1px}
+.space-event .event-tags{
+  margin-top:20px;
+  display:flex;flex-wrap:wrap;gap:8px 14px;
+  font-family:var(--ff-sans);
+  font-size:10px;letter-spacing:.32em;
+  color:var(--gold);font-weight:500;
+  text-transform:uppercase;
+}
+.space-event .event-tags span{display:inline-flex;align-items:center;gap:10px}
+.space-event .event-tags span + span::before{content:"／";color:var(--line);}
+@media (max-width:779px){
+  .space-event{padding:36px 28px}
+  .space-event .event-mark{justify-content:center}
+}
+
 /* ============================================================
    HOURS
    ============================================================ */
@@ -1100,6 +1171,19 @@ section.block{padding:clamp(90px,12vw,160px) 0;position:relative}
         <p class="label">Counter</p>
         <h3>一人の、サク呑みに</h3>
         <p>仕事帰り、ひと皿とひと合。店主と話せる、特等席。</p>
+      </div>
+    </div>
+
+    <!-- Events / projector callout -->
+    <div class="space-event reveal">
+      <div class="event-mark">宴<span>・</span>祝</div>
+      <div class="event-body">
+        <p class="lab">Private &amp; Events</p>
+        <h3>プロジェクター完備。<br>宴会・お祝いの席にも。</h3>
+        <p>会社の<em>宴会</em>、<em>誕生日</em>、記念日のお祝いに。プロジェクターで写真や映像を映してのご利用も可能です。ご予約の際に、お気軽にご相談ください。</p>
+        <div class="event-tags">
+          <span>宴会</span><span>誕生日</span><span>記念日</span><span>歓送迎会</span>
+        </div>
       </div>
     </div>
 
