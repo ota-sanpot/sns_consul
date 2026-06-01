@@ -7,5 +7,5 @@ sample_store_v4/
 sample_store_v5/
 sample_store_v6/
 
-# tototon: 内部コンサル資料はローカルのみ（GitHub非公開）
-tototon/*.md
+# tototon: サイトは専用リポ ota-sanpot/tototon へ移設。内部資料はローカルのみ（GitHub非公開）
+tototon/
