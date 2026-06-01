@@ -6,3 +6,6 @@ sample_store_v3/
 sample_store_v4/
 sample_store_v5/
 sample_store_v6/
+
+# tototon: 内部コンサル資料はローカルのみ（GitHub非公開）
+tototon/*.md
