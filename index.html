@@ -939,11 +939,6 @@
       background: linear-gradient(180deg, rgba(99,102,241,0.07), rgba(236,72,153,0.07));
       box-shadow: inset 1px 0 0 rgba(99,102,241,0.18), inset -1px 0 0 rgba(99,102,241,0.18);
     }
-    thead .cmp-guruma { border-top: 3px solid transparent; background-clip: padding-box; }
-    .cmp-guruma-head {
-      position: relative;
-      padding-top: 26px;
-    }
     .cmp-guruma-name {
       font-size: 17px;
       font-weight: 900;
@@ -952,20 +947,6 @@
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
-    }
-    .cmp-badge {
-      position: absolute;
-      top: -1px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--grad-main);
-      color: #fff;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      padding: 3px 12px;
-      border-radius: 0 0 10px 10px;
-      white-space: nowrap;
     }
     /* 評価マーク */
     .cmp-mark {
@@ -1768,8 +1749,7 @@ body.has-cursor button { cursor: none !important; }
         <thead>
           <tr>
             <th class="cmp-axis" scope="col"></th>
-            <th class="cmp-guruma cmp-guruma-head" scope="col">
-              <span class="cmp-badge">⭐ おすすめ</span>
+            <th class="cmp-guruma" scope="col">
               <span class="cmp-guruma-name">GURUMA</span>
             </th>
             <th class="cmp-head" scope="col">自社運用</th>
@@ -1815,8 +1795,8 @@ body.has-cursor button { cursor: none !important; }
           </tr>
           <tr>
             <th class="cmp-axis" scope="row">運用にかかる自社の手間</th>
-            <td class="cmp-guruma"><span class="cmp-val">小</span><span class="cmp-val-sub">素材提供のみ</span></td>
-            <td><span class="cmp-val">大</span><span class="cmp-val-sub">毎日投稿</span></td>
+            <td class="cmp-guruma"><span class="cmp-val">小</span></td>
+            <td><span class="cmp-val">大</span></td>
             <td><span class="cmp-val">小</span></td>
           </tr>
         </tbody>
