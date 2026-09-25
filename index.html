@@ -639,7 +639,7 @@
     /* 事例カード */
     .case-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
       gap: 24px;
     }
     .case-card {
@@ -648,6 +648,19 @@
       border-radius: 16px;
       padding: 32px 28px;
       transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .case-photo {
+      margin: -32px -28px 24px;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 16px 16px 0 0;
+      background: var(--light-bg);
+    }
+    .case-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
     .case-card:hover {
       transform: translateY(-6px);
@@ -1600,41 +1613,30 @@ body.has-cursor button { cursor: none !important; }
 
     <div class="case-grid">
       <div class="case-card reveal reveal-delay-1">
-        <div class="case-tag">イタリアンバル / 居酒屋</div>
-        <h3 class="case-title">「週末限定メニュー」の考案で<br>週末の来客数が約1.5倍に増加</h3>
+        <div class="case-photo"><img src="img/cases/seafood-izakaya.webp" alt="海鮮居酒屋の店内" width="1672" height="941" loading="lazy"></div>
+        <div class="case-tag">CASE · 海鮮居酒屋</div>
+        <h3 class="case-title">リーチ数が10倍以上、フォロワー数が2倍以上に。<br>若年層の来客が増加。</h3>
         <div class="case-block">
-          <div class="case-block-label">施策内容</div>
-          <p class="case-block-body">週末の集客に課題を抱えていた店舗様に対し、特別感のある「週末限定メニュー」を提案・共同開発。そのメニューの魅力を最大限に引き出すシズル感のある写真とショート動画を制作し、事前告知を含めてInstagramで集中的に発信しました。</p>
+          <div class="case-block-label">施策</div>
+          <p class="case-block-body">料理や店舗の魅力を引き出す写真・リールを中心に、投稿内容と発信方法を改善。若年層にも届くコンテンツを継続的に発信しました。</p>
         </div>
         <div class="case-block">
           <div class="case-block-label">結果</div>
-          <p class="case-block-body">「限定メニューを目当てに来店した」という新規顧客が増加し、週末全体での来客数が約1.5倍に。さらに来店客によるSNSへの口コミ投稿（UGC）も自然発生するサイクルが生まれました。</p>
+          <p class="case-block-body">リーチ数が10倍以上、フォロワー数が2倍以上に増加。「Instagramを見て来店した」という声も増え、これまで少なかった若年層の来店にもつながりました。</p>
         </div>
       </div>
 
       <div class="case-card reveal reveal-delay-2">
-        <div class="case-tag">大衆居酒屋 / バル</div>
-        <h3 class="case-title">「写真映え」する新メニュー開発で<br>20〜30代の新規予約が急増</h3>
+        <div class="case-photo"><img src="img/cases/chicken-izakaya.webp" alt="鶏料理居酒屋の店内" width="1671" height="941" loading="lazy"></div>
+        <div class="case-tag">CASE · 鶏料理居酒屋</div>
+        <h3 class="case-title">商品と店舗の魅力を引き出す「まとめ投稿」で<br>新規ユーザーへの認知を拡大。</h3>
         <div class="case-block">
-          <div class="case-block-label">施策内容</div>
-          <p class="case-block-body">客層が固定化しており、若年層の新規獲得が課題でした。そこで、既存の食材を活用しつつインパクトのある「写真映え」する新メニューを考案し、Reels動画を活用してアピールを行いました。</p>
+          <div class="case-block-label">施策</div>
+          <p class="case-block-body">おすすめメニューや店舗の特徴を分かりやすくまとめた投稿を制作。初めて見る人にも店舗の魅力が伝わる発信を行いました。</p>
         </div>
         <div class="case-block">
           <div class="case-block-label">結果</div>
-          <p class="case-block-body">若年層をターゲットにした動画のリーチ数が跳ね上がり、短期間でフォロワーが急増。20代〜30代の若年層からの予約殺到に繋がり、平日ディナー帯も満席になる日が増えました。</p>
-        </div>
-      </div>
-
-      <div class="case-card reveal reveal-delay-3">
-        <div class="case-tag">居酒屋 / ダイニング</div>
-        <h3 class="case-title">有料予約サイトを見直して<br>月々の固定費を約4万円削減</h3>
-        <div class="case-block">
-          <div class="case-block-label">施策内容</div>
-          <p class="case-block-body">複数の有料予約サイトに毎月数万円ずつ支払うも、各媒体の予約貢献度が見えていない状態でした。媒体ごとの流入・予約数を可視化して費用対効果の低い契約を整理。同時にInstagram・TikTokからの自社予約導線（DM予約）を強化し、有料媒体への依存度を下げました。</p>
-        </div>
-        <div class="case-block">
-          <div class="case-block-label">結果</div>
-          <p class="case-block-body">月々の予約サイト固定費を約4万円削減しつつ、SNS経由の予約数は増加。削減分をSNS運用と店内体験の改善に再投資することで、利益率と顧客満足度の両方を底上げできました。</p>
+          <p class="case-block-body">店舗の魅力が一目で伝わる投稿が増え、投稿への反応や保存などのユーザーアクションが増加。アカウントを通じて、来店時におすすめ商品を注文いただく機会が増えました。</p>
         </div>
       </div>
     </div>
