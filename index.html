@@ -367,6 +367,29 @@
       letter-spacing: 1px;
     }
 
+    /* Hero 右側ビジュアル（PCのみ） */
+    .hero-visual { display: none; }
+    @media (min-width: 1024px) {
+      .hero-visual {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: 0; bottom: 0; right: 24px;
+        width: min(38%, 440px);
+        pointer-events: none;
+      }
+      .hero-visual-inner { position: relative; width: 100%; height: 520px; }
+      .hero-visual img {
+        position: absolute;
+        object-fit: cover;
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.18);
+        box-shadow: 0 30px 60px rgba(0,0,0,0.45);
+      }
+      .hv-1 { width: 80%; aspect-ratio: 4/5; top: 0; right: 0; transform: rotate(3deg); }
+      .hv-2 { width: 62%; aspect-ratio: 1/1; bottom: 0; left: 0; transform: rotate(-4deg); }
+    }
+
     /* マーキー */
     .marquee-wrap {
       background: var(--grad-main);
@@ -1413,6 +1436,13 @@ body.has-cursor button { cursor: none !important; }
       </a>
     </div>
 
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hero-visual-inner hero-anim ha-d3">
+        <img class="hv-1" src="img/cases/seafood-izakaya.webp" alt="">
+        <img class="hv-2" src="img/cases/chicken-izakaya.webp" alt="">
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1465,8 +1495,8 @@ body.has-cursor button { cursor: none !important; }
   <div class="section">
     <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:48px;align-items:center;" class="reveal">
       <div>
-        <div style="aspect-ratio:4/5;border-radius:16px;overflow:hidden;position:relative;">
-          <img src="img/画像縦.png" alt="コンセプト" style="width:100%;height:100%;object-fit:cover;">
+        <div style="aspect-ratio:1280/1930;border-radius:16px;overflow:hidden;position:relative;max-width:420px;margin:0 auto;">
+          <img src="img/concept-phones.webp" alt="大田区サンポットのInstagram・TikTokアカウント画面" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
         </div>
       </div>
       <div>
